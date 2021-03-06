@@ -5,6 +5,7 @@ import {
   Route,
   Switch,
 } from 'react-router-dom'
+import logo from '../img/2centsLogo.svg'
 
 
 class Navbar extends React.Component {
@@ -13,7 +14,9 @@ class Navbar extends React.Component {
 			<div>
 		      <div class="nav">
 		          <div class="left">
-		            <h1 class="logo">2 Cents</h1>
+                    <a href="/">
+		                <img src={logo} class='logo'/>
+                    </a>
 		          </div>
 		          <div class="right">
 		            <a class="item" href="/about">

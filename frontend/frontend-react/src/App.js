@@ -8,13 +8,12 @@ import NoMatch from './pages/NoMatch'
 import Donations from './pages/Donations'
 import About from './pages/About'
 import SignIn from './pages/SignIn'
-import Navbar from './components/Navbar'
+
 
 class App extends React.Component {
   render() {
     return (
       <React.Fragment>
-        <Navbar />
           <Router>
             <Switch>
               <Route
