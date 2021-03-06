@@ -5,13 +5,15 @@ import {
   Route,
   Switch,
 } from 'react-router-dom'
+import Navbar from '../components/Navbar'
 
 class About extends React.Component {
 	render() {
 		return(
 			<div>
+				<Navbar />
 		      <h1>about</h1>
-		    </div>
+		  </div>
 		)
 	}
 }
