@@ -20,10 +20,7 @@ class SignIn extends React.Component {
 		}
 
 		this.transition = this.transition.bind(this)
-		// this.signup = this.signup.bind(this)
-		// this.login = this.login.bind(this)
-		// this.handleEmailChange = this.handleEmailChange.bind(this)
-		// this.handlePasswordChange = this.handlePasswordChange.bind(this)
+
 	}
 
 	transition() {
@@ -74,11 +71,11 @@ class SignIn extends React.Component {
 	}
 
 	signup = async () => {
-		console.log("heeeeee")
 		console.log(this.state)
 		let result = await signup(this.state.username, this.state.password);
-		console.log("result is")
-		console.log(result)
+		console.log(result.status)
+		console.log(result.message)
+
 		// window.localStorage.setItem('jwt', result)
 		// console.log("localStorage.get", window.localStorage.getItem("jwt"))
 		
