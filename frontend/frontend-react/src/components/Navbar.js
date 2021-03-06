@@ -23,8 +23,8 @@ class Navbar extends React.Component {
                     </a>
 		          </div>
 		          <div class="right">
-		            <a class="item" href="/about">
-		              about
+		            <a class="item" href="/social">
+		              social
 		            </a>
 		            <a class="item" href="/charity">
 		              charity

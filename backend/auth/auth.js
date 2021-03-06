@@ -3,18 +3,19 @@
  * @author Chris Koehne <cdkoehne@gmail.com>
  */
 
+const jwt = require('jsonwebtoken');
+
 module.exports = {
   authenticateJWT: function (req, res, next) {
     try {
       const authHeader = req.headers.authorization;
       if (authHeader) {
         const token = authHeader.split(' ')[1];
-        console.log(token);
         let decoded = jwt.verify(token, process.env.JWT_SECRET);
         if (!decoded) {
           res.sendStatus(401);
         }
-        next();
+        return next();
       } else {
         res.sendStatus(401);
       }
