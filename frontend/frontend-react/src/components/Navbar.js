@@ -9,6 +9,10 @@ import logo from '../img/2centsLogo.svg'
 
 
 class Navbar extends React.Component {
+	signout = () => {
+		window.localStorage.setItem("jwt", null)
+	}
+
 	render() {
 		return(
 			<div>
@@ -29,7 +33,7 @@ class Navbar extends React.Component {
 		              donations
 		            </a>
 		            <div class="">
-		              <a class="btnGradient" href="/signin">Sign Out</a>
+		              <a class="btnGradient" href="/" onClick={this.signout.bind(this)}>Sign Out</a>
 		            </div>
 		            
 		          </div>

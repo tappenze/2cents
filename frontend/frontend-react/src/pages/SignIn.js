@@ -17,6 +17,7 @@ class SignIn extends React.Component {
 			validEmail: true,
 			password: '',
 			validPassword: true,
+			validSignin: true,
 			message: 'Email invalid'
 		}
 
@@ -54,6 +55,17 @@ class SignIn extends React.Component {
 	// 	console.log("login")
 	// }
 
+	resetState = () => {
+		this.setState({
+			email: '',
+			validEmail: true,
+			password: '',
+			validPassword: true,
+			validSignin: true,
+			message: 'Email invalid'
+		})
+	}
+
 	handlePasswordChange = (event) => {
 		this.setState({
 			password: event.target.value
@@ -67,42 +79,86 @@ class SignIn extends React.Component {
 		
 	}
 
-	signup = async () => {
+	signupfunc = async () => {
 		const passRe = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/
 		const emailRe = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
 		const passErr = passRe.test(this.state.password)
 		const emailErr = emailRe.test(this.state.email)
-		if (!passErr || !emailErr) {
+		let result = await signup(this.state.email, this.state.password);
+		if (!passErr || !emailErr || (result.status != 200)) {
 			if (!passErr) {
 				this.setState({
 					validPassword: false
 				})
 			}
-			if (!emailErr) {
+			else {
 				this.setState({
-					validEmail: false,
+					validPassword: true
 				})
 			}
+			if (!emailErr || result.status != 200) {
+				if (!emailErr) {
+					this.setState({
+						validEmail: false
+					})
+				}
+				else if (result.status != 200) {
+					this.setState({
+						validEmail: false,
+						message: result.message
+					})
+				}
+			}
+			else {
+				this.setState({
+					validEmail: true
+				})
+			}
+			
 			return
 		}
 		else {
 			console.log(this.state)
-			let result = await signup(this.state.email, this.state.password);
+			
 			console.log(result)
 			console.log(result.status)
 			console.log(result.message)
 			if (result.status == 200) {
-				window.localStorage.setItem('jwt', JSON.stringify(result.message))
+				window.localStorage.setItem('jwt', JSON.parse(JSON.stringify(result.message)))
+				console.log(this.props)
 				this.props.history.push("/home")
 				return
 			}
-			else {
-				this.setState({
-					message: result.message,
-					validEmail: false
-				})
-				return
-			}
+		}
+		
+		
+
+		// window.localStorage.setItem('jwt', result)
+		// console.log("localStorage.get", window.localStorage.getItem("jwt"))
+	}
+
+	loginfunc = async () => {
+		let result = await login(this.state.email, this.state.password);
+		if (result.status != 200) {
+			
+				
+			this.setState({
+				validSignin: false
+			})
+			return
+
+		}	
+		else {
+			console.log(this.state)
+			
+			console.log(result)
+			console.log(result.status)
+			console.log(result.message)
+			window.localStorage.setItem('jwt', JSON.parse(JSON.stringify(result.message)))
+			console.log(this.props)
+			this.props.history.push("/home")
+			return
+			
 		}
 		
 		
@@ -114,7 +170,9 @@ class SignIn extends React.Component {
 	render() {
 		let emailSpan = this.state.validEmail?'invis':'showErr'
 		let passSpan = this.state.validPassword?'invis':'showErr'
+		let signinSpan = this.state.validSignin?'invis':'showErr'
 		let message = this.state.message
+		console.log("emailSpan", emailSpan)
 
 
 		return(
@@ -122,19 +180,21 @@ class SignIn extends React.Component {
 				<div class="container" id="container">
 					<div class="forms-container">
 						<div class="signin-signup">
-							<form action="#" class="sign-in-form" >
+							<form action="#" class="sign-in-form" onSubmit={this.loginfunc}>
 								<h2 class="title">Sign in</h2>
 								<div class="input-field">
 									<i class="fas fa-user"></i>
-									<input type="text" placeholder="Username" />
+									<input type="text" placeholder="Username" onChange={this.handleEmailChange}/>
 								</div>
+								<span class={signinSpan}>Username or Passsword is incorrect</span>
+								<br/>
 								<div class="input-field">
 									<i class="fas fa-lock"></i>
-									<input type="password" placeholder="Password" />
+									<input type="password" placeholder="Password" onChange={this.handlePasswordChange}/>
 								</div>
 								<input type="submit" value="Login" class="btnGradient"/>
 							</form>
-							<form action="#" class="sign-up-form" onSubmit={this.signup}>
+							<form action="#" class="sign-up-form" onSubmit={this.signupfunc}>
 								<h2 class="title">Sign up</h2>
 								<div class="input-field">
 									<i class="fas fa-envelope"></i>
@@ -160,7 +220,7 @@ class SignIn extends React.Component {
 									Lorem ipsum, dolor sit amet consectetur adipisicing elit. Debitis,
 									ex ratione. Aliquid!
 								</p>
-								<button class="btn transparent" id="sign-up-btn">
+								<button class="btn transparent" id="sign-up-btn" onClick={this.resetState}>
 									Sign up
 								</button>
 							</div>
@@ -173,7 +233,7 @@ class SignIn extends React.Component {
 									Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum
 									laboriosam ad deleniti.
 								</p>
-								<button class="btn transparent" id="sign-in-btn" onClick={this.login}>
+								<button class="btn transparent" id="sign-in-btn" onClick={this.resetState}>
 									Sign in
 								</button>
 							</div>

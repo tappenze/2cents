@@ -10,14 +10,17 @@ import Navbar from '../components/Navbar'
 class Charity extends React.Component {
 	componentDidMount() {
 		console.log("localStorage.get", window.localStorage.getItem("jwt"))
+		if (window.localStorage.getItem("jwt") == 'null') {
+			this.props.history.push("/")
+		}
 	}
 
 	render() {
 		return(
 			<div>
 				<Navbar />
-		      <h1>charity</h1>
-		    </div>
+				
+		  </div>
 		)
 	}
 }
