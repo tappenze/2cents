@@ -1138,3 +1138,23 @@ $speed: 40s;
   from { background-position-x: 0; }
   to   { background-position-x: -$img-w * $ratio; }
 }
+
+/* card */
+.card {
+  box-shadow: 0px 2px 8px 0px var(--clr-gray-light);
+  text-align: center;
+  border-radius: 1rem;
+  position: relative;
+  overflow: hidden;
+  width: 80%;
+  height: 80%;
+  text-decoration: none;
+  color: #000;
+  margin: 15px;
+  padding: 15px;
+  border: #000;
+}
+
+.cardImg {
+  height: 1vh;
+}
