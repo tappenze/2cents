@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   sodipodi:docname="waterOrgIcon.svg"
+   inkscape:version="1.0 (4035a4f, 2020-05-01)"
+   id="svg4114"
+   version="1.1"
+   viewBox="0 0 59.999992 59.999992"
+   height="59.999992mm"
+   width="59.999992mm">
+  <defs
+     id="defs4108" />
+  <sodipodi:namedview
+     inkscape:window-maximized="0"
+     inkscape:window-y="25"
+     inkscape:window-x="0"
+     inkscape:window-height="753"
+     inkscape:window-width="1252"
+     showgrid="false"
+     inkscape:document-rotation="0"
+     inkscape:current-layer="layer1"
+     inkscape:document-units="mm"
+     inkscape:cy="70.639922"
+     inkscape:cx="267.48947"
+     inkscape:zoom="0.33347386"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     borderopacity="1.0"
+     bordercolor="#666666"
+     pagecolor="#ffffff"
+     id="base" />
+  <metadata
+     id="metadata4111">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     transform="translate(-35.060078,-129.47652)"
+     id="layer1"
+     inkscape:groupmode="layer"
+     inkscape:label="Layer 1">
+    <circle
+       r="29.999996"
+       cy="159.47652"
+       cx="65.060074"
+       id="path2195-5-8-3"
+       style="fill:#ffffff;fill-opacity:1;stroke-width:4.7906;stroke-linecap:round;stroke-linejoin:round;paint-order:fill markers stroke" />
+    <image
+       y="152.01216"
+       x="40.06007"
+       width="49.999996"
+       height="14.928907"
+       preserveAspectRatio="none"
+       style="image-rendering:optimizeQuality"
+       xlink:href="data:image/png;base64,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 TkSuQmCC "
+       id="image2056" />
+  </g>
+</svg>
