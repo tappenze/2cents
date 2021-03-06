@@ -70,9 +70,18 @@ class LandingPage extends React.Component {
 					</svg>
 				</div>
 				<section class="moreInfo">
-					<div class="slider">
-						<div class="slider-row"></div>
+					<div class="row">
+						<div class="col">	
+							<div class="slider">
+								<h1 class="landingH1">
+									Most major banks accepted
+								</h1>
+								<div class="slider-row"></div>
+							</div>
+						</div>
 					</div>
+					
+					
 				</section>
 		  </div>
 		)

@@ -843,7 +843,7 @@ form.sign-in-form {
 
 .moreInfo {
   width: 100%;
-  height: 70vh;
+  height: 50vh;
   background: #ffffff;
 }
 
@@ -873,10 +873,10 @@ form.sign-in-form {
   --color: #fff;
   --icon: var(--color);
   margin: 0;
-  line-height: 20px;
-  font-size: 14px;
-  padding: 11px 12px 11px 36px;
-  border-radius: 22px;
+  line-height: 40px;
+  font-size: 28px;
+  padding: 22px 24px 22px 72px;
+  border-radius: 44px;
   border: none;
   background: none;
   outline: none;
@@ -888,40 +888,40 @@ form.sign-in-form {
   -webkit-tap-highlight-color: transparent;
   transform: translateY(var(--y, 0)) translateZ(0);
   color: var(--color);
-  box-shadow: 0 var(--shadow-y, 6px) var(--shadow-b, 16px) var(--shadow, var(--pause-shadow));
+  box-shadow: 0 var(--shadow-y, 6px) var(--shadow-b, 32px) var(--shadow, var(--pause-shadow));
   background: radial-gradient(circle, var(--play) 0%, var(--play) 50%, var(--pause) 50.5%, var(--pause) 100%);
   background-size: 400% 400%;
   background-position: 0% 0%;
   transition: background .8s, box-shadow .3s, transform .3s;
   &:hover {
-      --y: -1px;
-      --shadow-y: 8px;
-      --shadow-b: 20px;
+      --y: -2px;
+      --shadow-y: 16px;
+      --shadow-b: 40px;
   }
   &:active {
       --y: 1px;
-      --shadow-y: 4px;
-      --shadow-b: 12px;
+      --shadow-y: 8px;
+      --shadow-b: 24px;
   }
   &:before,
   &:after {
       content: '';
       background: var(--icon);
-      width: var(--width, 16px);
-      height: 12px;
+      width: var(--width, 32px);
+      height: 24px;
       position: absolute;
-      left: 18px;
-      top: 15px;
+      left: 36px;
+      top: 30px;
       backface-visibility: hidden;
       transform-origin: 50% 100%;
       transform: translateX(var(--x, 0)) translateZ(0);
-      -webkit-clip-path: polygon(0 0, 3px 0, 3px 12px, 0 12px);
-      clip-path: polygon(0 0, 3px 0, 3px 12px, 0 12px);
+      -webkit-clip-path: polygon(0 0, 6px 0, 6px 24px, 0 24px);
+      clip-path: polygon(0 0, 6px 0, 6px 24px, 0 24px);
       transition: clip-path .6s ease;
   }
   &:after {
-      --width: 3px;
-      --x: 6px;
+      --width: 6px;
+      --x: 12px;
   }
   i {
       display: block;
@@ -969,8 +969,8 @@ form.sign-in-form {
           }
       }
       &:before {
-          -webkit-clip-path: polygon(0 0, 11px 6px, 11px 6px, 0 12px);
-          clip-path: polygon(0 0, 11px 6px, 11px 6px, 0 12px);
+          -webkit-clip-path: polygon(0 0, 22px 12px, 22px 12px, 0 24px);
+          clip-path: polygon(0 0, 22px 12px, 22px 12px, 0 24px);
           transition-delay: .9s;
       }
       &:after {
@@ -980,8 +980,8 @@ form.sign-in-form {
           --shadow: var(--pause-shadow);
           --name: background-playing;
           &:before {
-              -webkit-clip-path: polygon(0 0, 3px 0, 3px 12px, 0 12px);
-              clip-path: polygon(0 0, 3px 0, 3px 12px, 0 12px);
+              -webkit-clip-path: polygon(0 0, 6px 0, 6px 24px, 0 24px);
+              clip-path: polygon(0 0, 6px 0, 6px 24px, 0 24px);
               transition-delay: 0s;
           }
           &:after {
@@ -1014,25 +1014,25 @@ form.sign-in-form {
 
 @keyframes to-play {
   15% {
-      transform: translateX(6px) scaleY(1.1);
+      transform: translateX(12px) scaleY(1.1);
   }
   30% {
-      transform: translateX(6px) scaleY(.9);
+      transform: translateX(12px) scaleY(.9);
   }
   45% {
-      transform: translateX(6px) scaleY(1.15);
-      -webkit-clip-path: polygon(0 0, 3px 0, 3px 12px, 0 12px);
-      clip-path: polygon(0 0, 3px 0, 3px 12px, 0 12px);
+      transform: translateX(12px) scaleY(1.15);
+      -webkit-clip-path: polygon(0 0, 6px 0, 6px 242px, 0 24px);
+      clip-path: polygon(0 0, 6px 0, 6px 24px, 0 24px);
       transform-origin: 50% 100%;
   }
   60%,
   100% {
-      -webkit-clip-path: polygon(0 9px, 3px 9px, 3px 12px, 0 12px);
-      clip-path: polygon(0 9px, 3px 9px, 3px 12px, 0 12px);
-      transform-origin: 50% 10.5px;
+      -webkit-clip-path: polygon(0 18px, 6px 18px, 6px 24px, 0 24px);
+      clip-path: polygon(0 18px, 3px 18px, 6px 24px, 0 24px);
+      transform-origin: 50% 21px;
   }
   60% {
-      transform: translateX(6px);
+      transform: translateX(12px);
   }
   99% {
       transform: translateX(0) rotate(-270deg);
@@ -1045,9 +1045,9 @@ form.sign-in-form {
 @keyframes to-pause {
   0%,
   50% {
-      -webkit-clip-path: polygon(0 9px, 3px 9px, 3px 12px, 0 12px);
-      clip-path: polygon(0 9px, 3px 9px, 3px 12px, 0 12px);
-      transform-origin: 50% 10.5px;
+      -webkit-clip-path: polygon(0 18px, 6px 18px, 6px 24px, 0 24px);
+      clip-path: polygon(0 19px, 6px 18px, 6px 24px, 0 24px);
+      transform-origin: 50% 21px;
   }
   0%,
   39% {
@@ -1057,26 +1057,26 @@ form.sign-in-form {
       transform: translateX(0) rotate(-270deg);
   }
   50% {
-      transform: translateX(6px) rotate(0deg);
+      transform: translateX(12px) rotate(0deg);
   }
   60%,
   100% {
-      transform: translateX(6px);
-      -webkit-clip-path: polygon(0 0, 3px 0, 3px 12px, 0 12px);
-      clip-path: polygon(0 0, 3px 0, 3px 12px, 0 12px);
+      transform: translateX(12px);
+      -webkit-clip-path: polygon(0 0, 6px 0, 6px 24px, 0 24px);
+      clip-path: polygon(0 0, 6px 0, 6px 24px, 0 24px);
       transform-origin: 50% 100%;
   }
   70% {
-      transform: translateX(6px) scaleY(1.15);
+      transform: translateX(12px) scaleY(1.15);
   }
   80% {
-      transform: translateX(6px) scaleY(.9);
+      transform: translateX(12px) scaleY(.9);
   }
   90% {
-      transform: translateX(6px) scaleY(1.05);
+      transform: translateX(12px) scaleY(1.05);
   }
   100% {
-      transform: translateX(6px);
+      transform: translateX(12px);
   }
 }
 
@@ -1112,23 +1112,25 @@ html {
 }
 
 /* slider */
-$img-w: 5912px;
-$img-h: 389px;
-$shrink: 2;
+$img-w: 1440px;
+$img-h: 425px;
+$shrink: 1;
 $ratio: 1 / $shrink;
 $speed: 40s;
 
 .slider {
   position: relative;
+  bottom: 0;
   width: 100%;
-  top: calc(50% - #{$img-h * $ratio / 2});
+  top: calc(100% - #{$img-h * $ratio / 2});
   overflow: hidden;
+  font-size: 30px;
   .slider-row {
     width: $img-w * $ratio;
     height: $img-h * $ratio;
     background-image: url('./img/payment-methods_copy_2_2x-1440x0-c-default.png');
     background-size: $img-w * $ratio $img-h * $ratio;
-    animation: slide $speed linear infinite;    
+    animation: slide $speed linear infinite;
   }
 }
 
