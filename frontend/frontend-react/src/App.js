@@ -6,7 +6,7 @@ import LandingPage from './pages/LandingPage'
 import Charity from './pages/Charity'
 import NoMatch from './pages/NoMatch'
 import Donations from './pages/Donations'
-import About from './pages/About'
+import Social from './pages/Social'
 import SignIn from './pages/SignIn'
 import Home from './pages/Home'
 
@@ -20,7 +20,7 @@ class App extends React.Component {
             <Switch>
               <Route exact path='/' component={LandingPage} />
               <Route path='/home' component={Home} />
-              <Route path='/about' component={About} />
+              <Route path='/social' component={Social} />
               <Route path='/charity' component={Charity} />
               <Route path='/donations' component={Donations} />
               <Route path='/signin' component={SignIn} />
