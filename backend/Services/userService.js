@@ -105,3 +105,74 @@ exports.login = async function (user) {
     return err;
   }
 };
+
+/**
+ * This function takes in a user's id and charity and updates their current charity
+ *
+ * @param {String} user.id the id of the user to access
+ * @param {String} user.charity the charity to select
+ * @returns {String} the string response
+ */
+exports.charitySelect = async function (user) {
+  try {
+    let filter = { _id: user.id };
+    let update = { charity: user.charity, active: true };
+    const opts = { runValidators: true };
+    let match = await User.findOne(filter).select('-_password');
+    if (match === null) {
+      return constants.U_DOES_NOT_EXIST;
+    }
+    let result = await User.findOneAndUpdate(filter, update, opts).select('-_password');
+    if (result instanceof User) {
+      return "Charity switched to " + user.charity;
+    }
+    return "Could not update charity to " + user.active;
+    
+  } catch (err) {
+    console.log(err);
+    return err;
+  }
+};
+
+/**
+ * This function takes in a user's id and gets the status of their current charity
+ *
+ * @param {String} id the id of the user to access
+ * @returns {String} the string response
+ */
+exports.charityStatus = async function (id) {
+  try {
+    let match = await User.findOne({ _id: id }).select('charity active -_id');
+    if (match === null) {
+      return constants.U_DOES_NOT_EXIST;
+    }
+    return match;
+  } catch (err) {
+    console.log(err);
+    return err;
+  }
+};
+
+/**
+ * This function takes in a user's id and sets their charity's active status to specified value
+ *
+ * @param {String} user.id the id of the user to access
+ * @param {String} user.active the new active status
+ * @returns {String} the string response
+ */
+exports.updateActivity = async function (user) {
+  try {
+    let match = await User.findOne({ _id: user.id }).select('charity active -_id');
+    if (match === null) {
+      return constants.U_DOES_NOT_EXIST;
+    }
+    let result = await User.findOneAndUpdate({ _id: user.id }, {active: user.active});
+    if (result instanceof User) {
+      return "Updated to " + user.active;
+    }
+    return "Could not update to " + user.active;
+  } catch (err) {
+    console.log(err);
+    return err;
+  }
+};

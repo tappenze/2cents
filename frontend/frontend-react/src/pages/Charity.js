@@ -1,32 +1,39 @@
-import React from 'react'
-import {
-  BrowserRouter as Router,
-  Link,
-  Route,
-  Switch,
-} from 'react-router-dom'
-import Navbar from '../components/Navbar'
-import bagClub from '../img/bagClubIcon.svg'
-import bailProject from '../img/bailProjectIcon.svg'
-import feedingAmerica from '../img/feedingAmericaIcon.svg'
-import roomToRead from '../img/roomToReadIcon.svg'
-import unitedWay from '../img/unitedWayIcon.svg'
-import waterOrg from '../img/waterOrgIcon.svg'
+import React from 'react';
+import { BrowserRouter as Router, Link, Route, Switch } from 'react-router-dom';
+import Navbar from '../components/Navbar';
+import bagClub from '../img/bagClubIcon.svg';
+import bailProject from '../img/bailProjectIcon.svg';
+import feedingAmerica from '../img/feedingAmericaIcon.svg';
+import roomToRead from '../img/roomToReadIcon.svg';
+import unitedWay from '../img/unitedWayIcon.svg';
+import waterOrg from '../img/waterOrgIcon.svg';
+
+import { charitySelect, charityStatus, updateActivity } from '../connections/userConnections'
 
 class Charity extends React.Component {
-	constructor() {
-		super()
-		this.state = {
-			charity: "none"
-		}
-	}
+  constructor() {
+    super();
+    this.state = {
+      charity: 'none',
+    };
+  }
 
-	componentDidMount() {
-		console.log("localStorage.get", window.localStorage.getItem("jwt"))
-		if (window.localStorage.getItem("jwt") == 'null') {
-			this.props.history.push("/")
-		}
-	}
+  async componentDidMount() {
+    if (window.localStorage.getItem('jwt') == 'null') {
+      this.props.history.push('/');
+      return;
+    }
+    let jwt = window.localStorage.getItem('jwt');
+		// console.log("jwt is")
+		// console.log(jwt)
+		// console.log(await charitySelect(jwt, "red cross"))
+		// console.log(await charityStatus(jwt))
+		// console.log(await updateActivity(jwt, true))
+
+
+
+  }
+
 
 	handleClick = (e) => {
 		this.setState({
@@ -139,6 +146,7 @@ class Charity extends React.Component {
 			
 		)
 	}
+
 }
 
 export default Charity;
