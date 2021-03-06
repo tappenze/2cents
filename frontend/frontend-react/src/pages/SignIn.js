@@ -18,7 +18,10 @@ class SignIn extends React.Component {
 			password: '',
 			validPassword: true,
 			validSignin: true,
-			message: 'Email invalid'
+			message: 'Email invalid',
+			linkToken: "",
+      		accessToken: "",
+      		itemID: ""
 		}
 
 		this.transition = this.transition.bind(this)
@@ -50,6 +53,7 @@ class SignIn extends React.Component {
 		console.log("componenetDidMount")
 		this.transition()
 	}
+	
 
 	// login() {
 	// 	console.log("login")
@@ -126,7 +130,7 @@ class SignIn extends React.Component {
 			if (result.status == 200) {
 				window.localStorage.setItem('jwt', JSON.parse(JSON.stringify(result.message)))
 				console.log(this.props)
-				this.props.history.push("/home")
+				this.props.history.push("/banks")
 				return
 			}
 		}
