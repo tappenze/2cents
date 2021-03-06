@@ -8,6 +8,10 @@ import {
 import Navbar from '../components/Navbar'
 
 class Charity extends React.Component {
+	componentDidMount() {
+		console.log("localStorage.get", window.localStorage.getItem("jwt"))
+	}
+
 	render() {
 		return(
 			<div>
