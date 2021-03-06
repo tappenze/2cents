@@ -73,7 +73,38 @@ class Home extends React.Component {
 					</div>
 				</section>
 				<section class="info">
-				
+				<div class="row">
+					<div class="col bios">
+						<i class="fas fa-shield-alt"></i>
+						<h1>
+							Secure
+						</h1>
+						<p>
+							Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+						</p>
+					</div>
+					<div class="col">
+						<div class="bios">
+							<i class="fas fa-search-dollar"></i>
+							<h1>
+								Transparent
+							</h1>
+							<p>
+								Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+							</p>
+						</div>
+						
+					</div>
+					<div class="col bios">
+						<i class="fas fa-hand-holding-usd"></i>
+						<h1>
+							Non-profit
+						</h1>
+						<p>
+							Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+						</p>
+					</div>
+				</div>
 						
 				</section>
 				<div class="wave">
@@ -82,7 +113,18 @@ class Home extends React.Component {
 					</svg>
 				</div>
 				<section class="moreInfo">
-
+					<div class="row">
+						<div class="col">	
+							<div class="slider">
+								<h1 class="landingH1">
+									Most major banks accepted
+								</h1>
+								<div class="slider-row"></div>
+							</div>
+						</div>
+					</div>
+					
+					
 				</section>
 		  </div>
 		  

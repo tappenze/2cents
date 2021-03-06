@@ -783,6 +783,13 @@ form.sign-in-form {
 
 .bios {
   margin: 2.5vw;
+  position: relative;
+  i {
+    z-index: 3;
+    color: #ccc;
+    font-size: 50px;
+    height: 10vh;
+  }
 }
 
 .landing {
@@ -874,6 +881,7 @@ form.sign-in-form {
   width: 100%;
   height: 70vh;
   background: #f3f3f3;
+  z-index: -1;
 }
 
 .moreInfo {
@@ -1234,5 +1242,89 @@ $speed: 40s;
     align-content: center;
     justify-content: center;
     margin: auto;
+  }
+}
+
+/* idling morphing bubble */
+
+.bubbleContainer {
+  height: 20vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  z-index: 5;
+  top: 0;
+  left: 0;
+  position: relative;
+}
+
+.bubbleBox {
+  width: 14vmin;
+  height: 14vmin;
+  border: 1px dashed rgba(255,255,255,0.4);
+  position: relative;
+  
+  &::before {
+    content: "";
+    position: relative;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    border-radius: 50%;
+    border: 1px dashed rgba(255,255,255,0.4);
+    transform: scale(1.42);
+  }
+}
+
+.spin-container {
+  width: 100%;
+  height: 100%;
+  animation: spin 12s linear infinite;
+  position: relative;
+}
+
+.shape {
+  width: 100%;
+  height: 100%;
+  transition: border-radius 1s ease-out;
+  border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+  animation: morph 8s ease-in-out infinite both alternate;
+  position: relative;
+  overflow: hidden;
+  z-index: 5;
+}
+
+.bd {
+  width: 142%;
+  height: 142%;
+  position: relative;
+  left: -21%;
+  top: -21%;
+  background: #bf9feb;
+  background-size: 100%;
+  background-position: center center;
+  display: flex;
+  color: #003;
+  font-size: 5vw;
+  font-weight: bold;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  text-transform: uppercase;
+  animation: spin 12s linear infinite reverse;
+  opacity: 1;
+  z-index: 2;
+}
+
+@keyframes morph {
+  0% {border-radius: 40% 60% 60% 40% / 60% 30% 70% 40%;} 
+  100% {border-radius: 40% 60%;} 
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(1turn);
   }
 }

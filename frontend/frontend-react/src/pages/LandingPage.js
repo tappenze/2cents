@@ -60,6 +60,7 @@ class LandingPage extends React.Component {
 				<section class="info">
 				<div class="row">
 					<div class="col bios">
+						<i class="fas fa-shield-alt"></i>
 						<h1>
 							Secure
 						</h1>
@@ -67,15 +68,20 @@ class LandingPage extends React.Component {
 							Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
 						</p>
 					</div>
-					<div class="col bios">
-						<h1>
-							Transparent
-						</h1>
-						<p>
-							Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-						</p>
+					<div class="col">
+						<div class="bios">
+							<i class="fas fa-search-dollar"></i>
+							<h1>
+								Transparent
+							</h1>
+							<p>
+								Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+							</p>
+						</div>
+						
 					</div>
 					<div class="col bios">
+						<i class="fas fa-hand-holding-usd"></i>
 						<h1>
 							Non-profit
 						</h1>
