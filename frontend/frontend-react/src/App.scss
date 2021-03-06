@@ -43,8 +43,8 @@ button {
 }
 
 .logo {
-  height: 5vh;
-  weight: 5vw;
+  height: 7vh;
+  weight: 7vw;
   padding: 0.5vh 0.5vw;
 }
 
@@ -802,10 +802,10 @@ form.sign-in-form {
 }
 
 .btnGradient {
-  background: linear-gradient(45deg, #9fa5eb, #bf9feb, #e59feb);
+  background: linear-gradient(45deg, #9fa5eb, #bf9feb, #e59feb, #bf9feb, #9fa5eb);
   background-size: 600% 600%;
   width: 10vw;
-  padding: 0.5vh 1vw;
+  padding: 1.5vh 1.5vw;
   margin: 16px;
   height: 49px;
   font-size: 20px;
@@ -826,7 +826,7 @@ form.sign-in-form {
 }
 
 .btnGradient:hover {
-  animation: AnimationName 2s ease infinite;
+  animation: AnimationName 3.3s ease infinite;
 }
 
 @keyframes AnimationName { 

@@ -12,21 +12,13 @@ import Home from './pages/Home'
 
 
 class App extends React.Component {
+
   render() {
     return (
       <React.Fragment>
           <Router>
             <Switch>
-              <Route
-                exact path='/'
-                render= {
-                  () => {
-                    return(
-                      <LandingPage />
-                    )
-                  }
-                }
-              />
+              <Route exact path='/' component={LandingPage} />
               <Route path='/home' component={Home} />
               <Route path='/about' component={About} />
               <Route path='/charity' component={Charity} />

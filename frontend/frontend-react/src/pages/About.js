@@ -8,6 +8,12 @@ import {
 import Navbar from '../components/Navbar'
 
 class About extends React.Component {
+	componentDidMount() {
+		if (window.localStorage.getItem("jwt") == 'null') {
+			this.props.history.push("/")
+		}
+	}
+
 	render() {
 		return(
 			<div>

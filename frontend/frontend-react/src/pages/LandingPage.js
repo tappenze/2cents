@@ -9,6 +9,28 @@ import NavbarLanding from '../components/NavbarLanding'
 import svg from '../img/undraw_review_fkgn.svg'
 
 class LandingPage extends React.Component {
+	constructor() {
+		super()
+		this.redirect = this.redirect.bind(this)
+
+	}
+
+	redirect() {
+		console.log(this.props)
+		console.log(window.localStorage.getItem("jwt"))
+		if (window.localStorage.getItem("jwt") !== 'null') {
+			console.log("jwt is not null")
+			this.props.history.push("/home")
+		}
+		else {
+			console.log("jwt is null")
+		}
+	}
+
+	componentDidMount() {
+		this.redirect()
+	}
+
 	render() {
 		return(
 			<div>

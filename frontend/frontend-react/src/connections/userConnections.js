@@ -17,7 +17,9 @@ let BASE = "http://localhost:5000";
 export const signup = async (email, password) => {
   let data = {
     email: email,
-    password: password
+    password: password,
+    charity: "none",
+    active: true
   };
   
   let res = await fetch(BASE + "/users/signup", {
@@ -40,7 +42,9 @@ export const signup = async (email, password) => {
 export const login = async (email, password) => {
   let data = {
     email: email,
-    password: password
+    password: password,
+    charity: "none",
+    active: true
   };
   
   let res = await fetch(BASE + "/users/login", {
