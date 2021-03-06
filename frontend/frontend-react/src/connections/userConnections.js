@@ -27,8 +27,7 @@ export const signup = async (email, password) => {
     },
     body: JSON.stringify(data),
   });
-
-  return parseBody(res);
+  return { status: res.status, message: await res.text() };
 };
 
 
@@ -52,7 +51,7 @@ export const login = async (email, password) => {
     body: JSON.stringify(data),
   });
 
-  return parseBody(res);
+  return { status: res.status, message: await res.text() };
 };
 
 
