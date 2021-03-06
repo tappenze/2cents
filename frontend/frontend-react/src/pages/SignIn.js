@@ -14,9 +14,9 @@ class SignIn extends React.Component {
 		super()
 		this.state = {
 			username: '',
-			validUsername: true,
+			validUsername: false,
 			password: '',
-			validPassword: true
+			validPassword: false
 		}
 
 		this.transition = this.transition.bind(this)
@@ -61,14 +61,17 @@ class SignIn extends React.Component {
 	// }
 
 	handlePasswordChange = (event) => {
+		
 		this.setState({
 			password: event.target.value
 		})
 	}
 
 	handleUsernameChange = (event) => {
+		const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
 		this.setState({
-			username: event.target.value
+			username: event.target.value,
+			validUsername: re.test(event.target.value)
 		})
 		
 	}
@@ -81,8 +84,6 @@ class SignIn extends React.Component {
 		console.log(result)
 		// window.localStorage.setItem('jwt', result)
 		// console.log("localStorage.get", window.localStorage.getItem("jwt"))
-		
-
 	}
 
 	render() {
@@ -107,7 +108,7 @@ class SignIn extends React.Component {
 								<h2 class="title">Sign up</h2>
 								<div class="input-field">
 									<i class="fas fa-envelope"></i>
-									<input type="email" placeholder="Email" onChange={this.handleUsernameChange}/>
+									<input type="text" placeholder="Email" onChange={this.handleUsernameChange}/>
 								</div>
 								<div class="input-field">
 									<i class="fas fa-lock"></i>
