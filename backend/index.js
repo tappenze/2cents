@@ -101,6 +101,7 @@ app.get("/hello", function (req, res) {
   res.send("Hello World");
 });
 
+app.use(require(path.resolve(__dirname, "./Routers/userRouter")));
 
 /**
  * when deployed, the website will need to dynamically get a port number.
