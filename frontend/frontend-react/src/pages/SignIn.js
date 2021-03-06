@@ -11,7 +11,16 @@ import svg2 from '../img/undraw_web_developer_p3e5.svg'
 class SignIn extends React.Component {
 	constructor() {
 		super()
+		this.state = {
+			username: '',
+			validUsername: true,
+			password: '',
+			validPassword: true
+		}
+
 		this.transition = this.transition.bind(this)
+		this.signup = this.signup.bind(this)
+		this.login = this.login.bind(this)
 	}
 
 	transition() {
@@ -38,6 +47,14 @@ class SignIn extends React.Component {
 	componentDidMount() {
 		console.log("componenetDidMount")
 		this.transition()
+	}
+
+	signup() {
+		console.log("signup")
+	}
+
+	login() {
+		console.log("login")
 	}
 
 	render() {
@@ -81,7 +98,7 @@ class SignIn extends React.Component {
 									Lorem ipsum, dolor sit amet consectetur adipisicing elit. Debitis,
 									ex ratione. Aliquid!
 								</p>
-								<button class="btn transparent" id="sign-up-btn">
+								<button class="btn transparent" id="sign-up-btn" onclick={this.signup}>
 									Sign up
 								</button>
 							</div>
@@ -94,7 +111,7 @@ class SignIn extends React.Component {
 									Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum
 									laboriosam ad deleniti.
 								</p>
-								<button class="btn transparent" id="sign-in-btn">
+								<button class="btn transparent" id="sign-in-btn" onclick={this.login}>
 									Sign in
 								</button>
 							</div>
