@@ -13,10 +13,11 @@ class SignIn extends React.Component {
 	constructor() {
 		super()
 		this.state = {
-			username: '',
-			validUsername: true,
+			email: '',
+			validEmail: true,
 			password: '',
-			validPassword: true
+			validPassword: true,
+			message: 'Email invalid'
 		}
 
 		this.transition = this.transition.bind(this)
@@ -49,10 +50,6 @@ class SignIn extends React.Component {
 		this.transition()
 	}
 
-	signup() {
-		console.log("signup")
-	}
-
 	// login() {
 	// 	console.log("login")
 	// }
@@ -63,26 +60,63 @@ class SignIn extends React.Component {
 		})
 	}
 
-	handleUsernameChange = (event) => {
+	handleEmailChange = (event) => {
 		this.setState({
-			username: event.target.value
+			email: event.target.value
 		})
 		
 	}
 
 	signup = async () => {
-		console.log(this.state)
-		let result = await signup(this.state.username, this.state.password);
-		console.log(result.status)
-		console.log(result.message)
+		const passRe = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/
+		const emailRe = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+		const passErr = passRe.test(this.state.password)
+		const emailErr = emailRe.test(this.state.email)
+		if (!passErr || !emailErr) {
+			if (!passErr) {
+				this.setState({
+					validPassword: false
+				})
+			}
+			if (!emailErr) {
+				this.setState({
+					validEmail: false,
+				})
+			}
+			return
+		}
+		else {
+			console.log(this.state)
+			let result = await signup(this.state.email, this.state.password);
+			console.log(result)
+			console.log(result.status)
+			console.log(result.message)
+			if (result.status == 200) {
+				window.localStorage.setItem('jwt', JSON.stringify(result.message))
+				this.props.history.push("/home")
+				return
+			}
+			else {
+				this.setState({
+					message: result.message,
+					validEmail: false
+				})
+				return
+			}
+		}
+		
+		
 
 		// window.localStorage.setItem('jwt', result)
 		// console.log("localStorage.get", window.localStorage.getItem("jwt"))
-		
-
 	}
 
 	render() {
+		let emailSpan = this.state.validEmail?'invis':'showErr'
+		let passSpan = this.state.validPassword?'invis':'showErr'
+		let message = this.state.message
+
+
 		return(
 			<div>
 				<div class="container" id="container">
@@ -98,19 +132,22 @@ class SignIn extends React.Component {
 									<i class="fas fa-lock"></i>
 									<input type="password" placeholder="Password" />
 								</div>
-								<input type="submit" value="Login" class="btn solid"/>
+								<input type="submit" value="Login" class="btnGradient"/>
 							</form>
 							<form action="#" class="sign-up-form" onSubmit={this.signup}>
 								<h2 class="title">Sign up</h2>
 								<div class="input-field">
 									<i class="fas fa-envelope"></i>
-									<input type="email" placeholder="Email" onChange={this.handleUsernameChange}/>
+									<input class="emailInput" type="text" placeholder="Email" onChange={this.handleEmailChange}/>
 								</div>
+								<span class={emailSpan}>{message}</span>
+								<br/>
 								<div class="input-field">
 									<i class="fas fa-lock"></i>
-									<input type="password" placeholder="Password" onChange={this.handlePasswordChange}/>
+									<input class="passInput" type="password" placeholder="Password" onChange={this.handlePasswordChange}/>
 								</div>
-								<input type="submit" class="btn" value="Sign up" />
+								<span class={passSpan}>Invalid password</span>
+								<input type="submit" class="btnGradient" value="Sign up" />
 							</form>
 						</div>
 					</div>
@@ -136,7 +173,7 @@ class SignIn extends React.Component {
 									Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum
 									laboriosam ad deleniti.
 								</p>
-								<button class="btn transparent" id="sign-in-btn" onclick={this.login}>
+								<button class="btn transparent" id="sign-in-btn" onClick={this.login}>
 									Sign in
 								</button>
 							</div>
