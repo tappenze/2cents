@@ -5,6 +5,8 @@ import { usePlaidLink } from "react-plaid-link";
 import { PlaidLink } from "./PlaidLink";
 import axios from "axios";
 import jwt_decode from "jwt-decode";
+import plaidIcon from '../img/plaidIcon.svg'
+import Topbar from '../components/Topbar'
 // import Link from './Link';
 
 let BASE = 'http://localhost:5000';
@@ -110,17 +112,33 @@ class BankChoice extends React.Component {
 
     return (
       <div>
-        <PlaidLink
-          className="CustomButton"
-          style={{ padding: "20px", fontSize: "16px", cursor: "pointer" }}
-          token={this.getLinkToken() ? this.getLinkToken() : ""}
-          onExit={onExit}
-          onSuccess={onSuccess}
-          onEvent={onEvent}
-        >
-          Open Link and connect your bank!
-        </PlaidLink>
+        <Topbar />
+        <div class="plaidContainer">
+              <div class="plaidCard">
+                <img src={plaidIcon} class='plaidImg'/>
+                <h1 class="plaidH1">
+                  text
+                </h1>
+                <p class="plaidP">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                </p>
+                <div class="plaidRow">
+                  <br/>
+                  <PlaidLink
+                    className="plaidLink"
+                    token={this.getLinkToken() ? this.getLinkToken() : ""}
+                    onExit={onExit}
+                    onSuccess={onSuccess}
+                    onEvent={onEvent}
+                  >
+                    Connect
+                  </PlaidLink>
+                </div>
+                
+              </div>
+        </div>
       </div>
+      
     );
   }
 }

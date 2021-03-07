@@ -2,6 +2,8 @@ import React from 'react';
 import { BrowserRouter as Router, Link, Route, Switch } from 'react-router-dom';
 import NavbarLanding from '../components/NavbarLanding';
 import svg from '../img/undraw_review_fkgn.svg';
+import { updateActivity, charityStatus } from "../connections/userConnections";
+
 
 class LandingPage extends React.Component {
   constructor() {
@@ -9,16 +11,25 @@ class LandingPage extends React.Component {
     this.redirect = this.redirect.bind(this);
   }
 
-  redirect() {
-    console.log(this.props);
-    console.log(window.localStorage.getItem('jwt'));
-    if (window.localStorage.hasOwnProperty('jwt') === true) {
-      // console.log("jwt is not null")
-      this.props.history.push('/home');
-    } else {
-      console.log('jwt is null');
-    }
-  }
+  async redirect() {
+		console.log(this.props)
+		console.log(window.localStorage.getItem("jwt"))
+		if (window.localStorage.hasOwnProperty("jwt") === true) {
+			// console.log("jwt is not null")
+			
+			let result = await charityStatus(window.localStorage.getItem("jwt"))
+			if (result.message.charity == "none") {
+				this.props.history.push("/charity")
+			}
+			else {
+				this.props.history.push("/home")
+			}
+
+		}
+		else {
+			console.log("jwt is null")
+		}
+	}
 
   componentDidMount() {
     this.redirect();
