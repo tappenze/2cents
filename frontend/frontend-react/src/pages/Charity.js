@@ -19,7 +19,7 @@ class Charity extends React.Component {
   }
 
   async componentDidMount() {
-    if (window.localStorage.getItem('jwt') == 'null') {
+		if (window.localStorage.hasOwnProperty("jwt") === false) {
       this.props.history.push('/');
       return;
     }

@@ -9,7 +9,7 @@ import Navbar from '../components/Navbar'
 
 class Social extends React.Component {
 	componentDidMount() {
-		if (window.localStorage.getItem("jwt") == 'null') {
+		if (window.localStorage.hasOwnProperty("jwt") === false) {
 			this.props.history.push("/")
 		}
 	}
