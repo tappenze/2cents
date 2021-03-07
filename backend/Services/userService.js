@@ -81,6 +81,21 @@ exports.getUserById = async function (id) {
 };
 
 /**
+ * This function returns all users
+ *
+ * @returns {JSON} the JSON object of the user
+ */
+exports.getAllUsers = async function () {
+  try {
+    result = await User.find({});
+    return result;
+  } catch (err) {
+    return err;
+  }
+};
+
+
+/**
  * This function takes in an email and a password and attempts to log in the user
  * corresponding to them.
  *
@@ -247,6 +262,40 @@ exports.bankchoice = async function (user) {
       );
     }
     return 'Could not update accesstoken and userid to';
+  } catch (err) {
+    console.log(err);
+    return err;
+  }
+};
+
+/**
+ * This function takes in a user's id and sets their donations to specified array
+ *
+ * @param {String} user.id the id of the user to access
+ * @param {String} user.donations
+ * @returns {String} the string response
+ */
+exports.updateDonations = async function (user) {
+  try {
+    let filter = { _id: user.id };
+    const opts = { runValidators: true };
+    let match = await User.findOne({ _id: user.id }).select(
+      'charity active -_id'
+    );
+    if (match === null) {
+      return constants.U_DOES_NOT_EXIST;
+    }
+    let update = {
+      donationsHistory: user.donations,
+    };
+
+    let result = await User.findOneAndUpdate(filter, update, opts).select(
+      '-_password'
+    );
+    if (result instanceof User) {
+      return 'Updated to ' + user.active;
+    }
+    return 'Could not update to ' + user.active;
   } catch (err) {
     console.log(err);
     return err;

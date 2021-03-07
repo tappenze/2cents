@@ -55,7 +55,7 @@ const client = new plaid.Client({
     version: "2019-05-29",
   },
 });
-console.log(client);
+// console.log(client);
 
 /**
  * connection to MongoDB Atlas Users database
@@ -153,7 +153,7 @@ app.listen(PORT, () => {
 // Create a link token with configs which we can then use to initialize Plaid Link client-side.
 // See https://plaid.com/docs/#create-link-token
 app.post("/api/create_link_token", function (request, response, next) {
-  console.log("creating link token");
+  // console.log("creating link token");
   const configs = {
     user: {
       // This should correspond to a unique id for the current user.
@@ -278,9 +278,9 @@ app.post(
 // an API access_token
 // https://plaid.com/docs/#exchange-token-flow
 app.post("/api/get_access_token", function (request, response, next) {
-  console.log("getting access token from link token");
-  console.log(request.body);
-  console.log(request.body.publicToken);
+  // console.log("getting access token from link token");
+  // console.log(request.body);
+  // console.log(request.body.publicToken);
   PUBLIC_TOKEN = request.body.publicToken;
   client.exchangePublicToken(PUBLIC_TOKEN, function (error, tokenResponse) {
     if (error != null) {
@@ -289,8 +289,8 @@ app.post("/api/get_access_token", function (request, response, next) {
         error,
       });
     }
-    console.log("the responses are");
-    console.log(tokenResponse);
+    // console.log("the responses are");
+    // console.log(tokenResponse);
     ACCESS_TOKEN = tokenResponse.access_token;
     ITEM_ID = tokenResponse.item_id;
     // prettyPrintResponse(tokenResponse);
@@ -336,7 +336,7 @@ app.get("/api/auth", function (request, response, next) {
 // https://plaid.com/docs/#transactions
 app.get("/api/transactions/:accessToken", function (request, response, next) {
   // Pull transactions for the Item for the last 30 days
-  console.log("In the get transactions part of the backend");
+  // console.log("In the get transactions part of the backend");
   // console.log(request.params);
   const startDate = moment().subtract(30, "days").format("YYYY-MM-DD");
   const endDate = moment().format("YYYY-MM-DD");

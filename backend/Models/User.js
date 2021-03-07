@@ -14,6 +14,18 @@ const activityHistorySchema = new mongoose.Schema(
   { _id: false }
 );
 
+const donationsHistorySchema = new mongoose.Schema(
+  {
+    timeDonated: {type: Date, required: true},
+    charity: { type: String, required: true},
+    amount: {type: Number, required: true},
+    email: {type: String, required: true}
+  },{_id: false}
+);
+// date 
+// name of charity
+// amount
+
 const userSchema = new mongoose.Schema(
   {
     email: {
@@ -26,6 +38,7 @@ const userSchema = new mongoose.Schema(
     charity: { type: String, required: true, default: 'none' },
     active: { type: Boolean, required: true, default: false },
     activityHistory: { type: [activityHistorySchema], required: true },
+    donationsHistory: {type: [donationsHistorySchema], required: true},
     accessToken: { type: String, required: false },
     itemId: { type: String, required: false },
   },
