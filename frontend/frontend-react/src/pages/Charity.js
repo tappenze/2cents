@@ -59,114 +59,113 @@ class Charity extends React.Component {
   render() {
     console.log(this.state);
     let bagClass =
-      this.state.charity === "boysAndGirlsClub" ? "selected" : "";
-    let bailClass = this.state.charity === "bailProject" ? "selected" : "";
+
+      this.state.charity === "Boys and Girls Club" ? "selected" : "";
+    let bailClass = this.state.charity === "Bail Project" ? "selected" : "";
     let feedingClass =
-      this.state.charity === "feedingAmerica" ? "selected" : "";
-    let roomClass = this.state.charity === "roomToRead" ? "selected" : "";
-    let unitedClass = this.state.charity === "unitedWay" ? "selected" : "";
-    let waterClass = this.state.charity === "waterOrg" ? "selected" : "";
+      this.state.charity === "Feeding America" ? "selected" : "";
+    let roomClass = this.state.charity === "Room to Read" ? "selected" : "";
+    let unitedClass = this.state.charity === "United Way" ? "selected" : "";
+    let waterClass = this.state.charity === "Water.org" ? "selected" : "";
 
 		let mainContent
 		if (this.state.loaded) {
 			mainContent = (
-				<div class="header">
-					<div>
-						<div class="cardRow">
-							<div class="col">
-									<div class={"card "+ bagClass}>
-										<a target="_blank" href="https://www.bgca.org">
-											<img class="charityIcon" src={bagClub}/>
-										</a>
-										<p>
-										Boys & Girls Clubs of America seeks to enable all young
-										people, especially those who have the greatest need, to reach
-										their full potential as productive, caring, responsible
-										citizens.{" "}
-										</p>
-										<button class="btnDarkGradient" id="boysAndGirlsClub"  onClick={this.handleClick}>
-											select
-										</button>
-									</div>
-							</div>
-							<div class="col">
-									<div class={"card "+ bailClass}>
-										<a target="_blank" href="https://bailproject.org">
-											<img class="charityIcon" src={bailProject}/>
-										</a>
-										<p>
-										The Bail Project combats mass incarceration by disrupting the
-										money bail system—one person at a time. 100% of online
-										donations are used to bring people home
-										</p>
-										<button class="btnDarkGradient" id="bailProject"  onClick={this.handleClick}>
-											select
-										</button>
-									</div>
-							</div>
-							<div class="col">
-									<div class={"card "+ feedingClass}>
-										<a target="_blank" href="https://www.feedingamerica.org">
-											<img class="charityIcon" src={feedingAmerica}/>
-										</a>
-										<p>
-										What began in 1979 as a clearinghouse for national food
-										donations is now the nation’s largest domestic hunger-relief
-										organization—a powerful and efficient network of 200 food
-										banks across the country.
-										</p>
-										<button class="btnDarkGradient" id="feedingAmerica"  onClick={this.handleClick}>
-											select
-										</button>
-									</div>
-							</div>
+				<div>
+					<div class="cardRow">
+						<div class="col">
+								<div class={"card "+ bagClass}>
+									<a target="_blank" href="https://www.bgca.org">
+										<img class="charityIcon" src={bagClub}/>
+									</a>
+									<p>
+									Boys & Girls Clubs of America seeks to enable all young
+									people, especially those who have the greatest need, to reach
+									their full potential as productive, caring, responsible
+									citizens.{" "}
+									</p>
+									<button class="btnDarkGradient" id="Boys and Girls Club"  onClick={this.handleClick}>
+										select
+									</button>
+								</div>
 						</div>
-						<div class="cardRow">
-							<div class="col">
-									<div class={"card "+ roomClass}>
-										<a target="_blank" href="https://www.roomtoread.org">
-											<img class="charityIcon" src={roomToRead}/>
-										</a>
-										<p>
-										Room to Read seeks to transform the lives of millions of
-										children in low-income communities by focusing on literacy and
-										gender equality in education.{" "}
-										</p>
-										<button class="btnDarkGradient" id="roomToRead"  onClick={this.handleClick}>
-											select
-										</button>
-									</div>
-							</div>
-							<div class="col">
-									<div class={"card "+ unitedClass}>
-										<a target="_blank" href="https://www.unitedway.org">
-											<img class="charityIcon" src={unitedWay}/>
-										</a>
-										<p>
-										United Way’s mission is to improve lives by mobilizing the
-										caring power of communities around the world to advance the
-										common good.
-										</p>
-										<button class="btnDarkGradient" id="unitedWay"  onClick={this.handleClick}>
-											select
-										</button>
-									</div>
-							</div>
-							<div class="col">
-									<div class={"card "+ waterClass}>
-										<a target="_blank" href="https://www.water.org">
-											<img class="charityIcon" src={waterOrg}/>
-										</a>
-										<p>
-										Water.org is a global nonprofit organization working to bring
-										water and sanitation to the world in a way that's safe,
-										accessible, and cost-effective.
-										</p>
-										<button class="btnDarkGradient" id="waterOrg"  onClick={this.handleClick}>
-											select
-										</button>
-									</div>
-							</div>
+						<div class="col">
+								<div class={"card "+ bailClass}>
+									<a target="_blank" href="https://bailproject.org">
+										<img class="charityIcon" src={bailProject}/>
+									</a>
+									<p>
+									The Bail Project combats mass incarceration by disrupting the
+									money bail system—one person at a time. 100% of online
+									donations are used to bring people home
+									</p>
+									<button class="btnDarkGradient" id="Bail Project"  onClick={this.handleClick}>
+										select
+									</button>
+								</div>
+						</div>
+						<div class="col">
+								<div class={"card "+ feedingClass}>
+									<a target="_blank" href="https://www.feedingamerica.org">
+										<img class="charityIcon" src={feedingAmerica}/>
+									</a>
+									<p>
+									What began in 1979 as a clearinghouse for national food
+									donations is now the nation’s largest domestic hunger-relief
+									organization—a powerful and efficient network of 200 food
+									banks across the country.
+									</p>
+									<button class="btnDarkGradient" id="Feeding America"  onClick={this.handleClick}>
+										select
+									</button>
+								</div>
+						</div>
+					</div>
+					<div class="cardRow">
+						<div class="col">
+								<div class={"card "+ roomClass}>
+									<a target="_blank" href="https://www.roomtoread.org">
+										<img class="charityIcon" src={roomToRead}/>
+									</a>
+									<p>
+									Room to Read seeks to transform the lives of millions of
+									children in low-income communities by focusing on literacy and
+									gender equality in education.{" "}
+									</p>
+									<button class="btnDarkGradient" id="Room to Read"  onClick={this.handleClick}>
+										select
+									</button>
+								</div>
+						</div>
+						<div class="col">
+								<div class={"card "+ unitedClass}>
+									<a target="_blank" href="https://www.unitedway.org">
+										<img class="charityIcon" src={unitedWay}/>
+									</a>
+									<p>
+									United Way’s mission is to improve lives by mobilizing the
+									caring power of communities around the world to advance the
+									common good.
+									</p>
+									<button class="btnDarkGradient" id="United Way"  onClick={this.handleClick}>
+										select
+									</button>
+								</div>
+						</div>
+						<div class="col">
+								<div class={"card "+ waterClass}>
+									<a target="_blank" href="https://www.water.org">
+										<img class="charityIcon" src={waterOrg}/>
+									</a>
+									<p>
+									Water.org is a global nonprofit organization working to bring
+									water and sanitation to the world in a way that's safe,
+									accessible, and cost-effective.
+									</p>
+									<button class="btnDarkGradient" id="Water.org"  onClick={this.handleClick}>
+										select
+									</button>
+								</div>
 						</div>
 					</div>
 					

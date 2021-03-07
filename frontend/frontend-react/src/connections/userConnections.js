@@ -69,6 +69,20 @@ export const getUser = async (jwt) => {
   return { status: res.status, message: await parseBody(res) };
 };
 
+export const getAllUsers = async(jwt) => {
+  let id = jwt_decode(jwt).id;
+
+  let res = await fetch(BASE + "/users", {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: "Bearer " + jwt,
+    },
+  });
+
+  return { status: res.status, message: await parseBody(res) };
+};
+
 /**
  * This function changes a user's charity
  * @param {String} jwt the jwt
