@@ -4,6 +4,7 @@ import Navbar from "../components/Navbar";
 import { usePlaidLink } from "react-plaid-link";
 import { PlaidLink } from "./PlaidLink";
 import axios from "axios";
+import jwt_decode from "jwt-decode";
 // import Link from './Link';
 
 let BASE = 'http://localhost:5000';
@@ -14,6 +15,7 @@ class BankChoice extends React.Component {
     this.state = {
       username: "",
       password: "",
+      jwt: "",
       linkToken: "",
       accessToken: "",
       itemID: "",
@@ -21,6 +23,7 @@ class BankChoice extends React.Component {
   }
   componentDidMount() {
     console.log("mounted");
+    this.setState({ jwt: window.localStorage.getItem("jwt") })
     console.log("banks jwt", window.localStorage.getItem("jwt"));
     this.createLinkToken();
     console.log("post createLinkToken");
@@ -60,13 +63,17 @@ class BankChoice extends React.Component {
     this.setState({ itemID: data.item_id });
     // now update the user's information
 
-    let info= {accessToken: data.access_token, itemID: data.item_id};
+    console.log("the jwt in bankchoice is ")
+    console.log(this.state.jwt)
+    let id = jwt_decode(this.state.jwt).id;
+    let info= {accessToken: data.access_token, itemID: data.item_id, id: id};
     console.log("about to make call with info being:")
     console.log(info)
     let result = await fetch(BASE + '/users/bank-choice', {
-      method: 'POST',
+      method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + this.state.jwt,
       },
       body: JSON.stringify(info),
     });
@@ -88,12 +95,19 @@ class BankChoice extends React.Component {
 
     const onEvent = (eventName, metadata) => {
       console.log("onEvent", eventName, metadata);
+      console.log("in on event");
+      if (eventName === "HANDOFF") {
+        console.log("found the handoff handler");
+        this.props.history.push("/charity");
+      }
     };
 
     const onSuccess = (token, metadata) => {
+      console.log("In the on success function?")
       console.log("onSuccess", token, metadata);
       this.getAccessToken(token);
     };
+
     return (
       <div>
         <PlaidLink
