@@ -52,7 +52,9 @@ export const getDonationsFromTransactions = async(user, transactions, activityHi
   // console.log(activityHistory);
   let donations = transactions.map((transaction) => {
     // take the transaction and process it into an object which is {timeDonated, charity, amount}
-    let amount = Math.round((1 - transaction.amount) * 100) / 100;
+    let amount = Math.round(
+      (Math.ceil(transaction.amount) - transaction.amount) * 100
+    ) / 100;
     let charity = findCharity(transaction, activityHistory);
     let timeDonated = transaction.date;
     let email = user.email;
