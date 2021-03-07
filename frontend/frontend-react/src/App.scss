@@ -911,8 +911,8 @@ form.sign-in-form {
 .play-pause-button {
   --play: #bf9feb;
   --play-shadow: #{rgba(#bf9feb, .24)};
-  --pause: #333;
-  --pause-shadow: #{rgba(#333, .24)};
+  --pause: #000;
+  --pause-shadow: #{rgba(#000, .24)};
   --color: #fff;
   --icon: var(--color);
   margin: 0;
