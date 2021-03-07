@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Link, Route, Switch } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import { updateActivity, charityStatus, getUser } from '../connections/userConnections';
-import { getTransactions } from '../connections/makeDonations';
+import { getTransactions, transactionsToDonations } from '../connections/makeDonations';
 
 class Home extends React.Component {
   constructor() {
@@ -60,12 +60,17 @@ class Home extends React.Component {
     await this.transition();
     console.log(this.props.history);
 
-		// let jwt = window.localStorage.getItem('jwt')
-		// let user = await getUser(jwt);
-		// const accessToken = user.message.accessToken;
-		// console.log(accessToken)
-		// let transactionsData = await getTransactions(accessToken);
-		// console.log(transactionsData);
+		let jwt = window.localStorage.getItem('jwt')
+		let userRes = await getUser(jwt);
+		let user = userRes.message
+		console.log("user is")
+		console.log(user)
+		const accessToken = user.accessToken;
+		console.log(accessToken)
+		let transactionsRes = await getTransactions(accessToken);
+		let transactions = transactionsRes.transactions;
+		console.log(transactions);
+		await transactionsToDonations(transactions, user.activityHistory, [])
   }
 
   handleClick = async () => {
