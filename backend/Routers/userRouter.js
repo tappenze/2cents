@@ -60,6 +60,8 @@ userRouter.get('/users/id/:id', auth.authenticateJWT, async function (req, res) 
  */
 userRouter.post('/users/signup', async function (req, res) {
   let result = await userService.addUser(req.body);
+  console.log("the result of add user is")
+  console.log(result.status)
   if (result === constants.U_CREATION_FAILURE) {
     res.status(500).send(result);
   } else if (result === constants.U_EMAIL_TAKEN) {
@@ -112,6 +114,18 @@ userRouter.get('/users/:id/charity-status', auth.authenticateJWT, async function
 
 userRouter.put('/users/update-activity', auth.authenticateJWT, async function (req, res) {
   let result = await userService.updateActivity(req.body);
+  if (result === constants.U_DOES_NOT_EXIST) {
+    res.status(404).send(result);
+  } else if (result instanceof Error) {
+    console.log(result);
+    res.status(400).send(result.message);
+  } else {
+    res.status(200).send(result);
+  }
+});
+
+userRouter.put('/users/bank-choice', async function (req, res) {
+  let result = await userService.bankchoice(req.body);
   if (result === constants.U_DOES_NOT_EXIST) {
     res.status(404).send(result);
   } else if (result instanceof Error) {

@@ -27,6 +27,7 @@ const jwt = require('jsonwebtoken');
  * @returns {String} the string response (Success or Failure)
  */
 exports.addUser = async function (addMe) {
+  console.log("in add user with new models");
   try {
     addMe.email = addMe.email.toLowerCase();
     let exists = await User.find({ email: addMe.email });
@@ -47,6 +48,7 @@ exports.addUser = async function (addMe) {
     }
     return constants.U_CREATION_FAILURE;
   } catch (err) {
+    console.log("there was an error")
     return err;
   }
 };
@@ -171,6 +173,35 @@ exports.updateActivity = async function (user) {
       return "Updated to " + user.active;
     }
     return "Could not update to " + user.active;
+  } catch (err) {
+    console.log(err);
+    return err;
+  }
+};
+
+/**
+ * This function takes in a user's id, access token, and item id and updates the user
+ *
+ * @param {String} user.id the id of the user to access
+ * @param {String} user.charity the charity to select
+ * @returns {String} the string response
+ */
+exports.bankchoice = async function (user) {
+  console.log("in bank choice")
+  try {
+    let filter = { _id: user.id };
+    let update = { accesstoken: user.accesstoken, itemid: user.itemid, active: true };
+    const opts = { runValidators: true };
+    let match = await User.findOne(filter).select('-_password');
+    if (match === null) {
+      return constants.U_DOES_NOT_EXIST;
+    }
+    let result = await User.findOneAndUpdate(filter, update, opts).select('-_password');
+    if (result instanceof User) {
+      return "access token set to " + user.accesstoken + "and item id set to " + user.itemid;
+    }
+    return "Could not update accesstoken and userid to " + user.active;
+    
   } catch (err) {
     console.log(err);
     return err;

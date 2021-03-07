@@ -9,6 +9,7 @@ import Donations from './pages/Donations'
 import Social from './pages/Social'
 import SignIn from './pages/SignIn'
 import Home from './pages/Home'
+import Banks from './pages/BankChoice'
 
 
 class App extends React.Component {
@@ -20,6 +21,7 @@ class App extends React.Component {
             <Switch>
               <Route exact path='/' component={LandingPage} />
               <Route path='/home' component={Home} />
+              <Route path='/banks' component={Banks} />
               <Route path='/social' component={Social} />
               <Route path='/charity' component={Charity} />
               <Route path='/donations' component={Donations} />
