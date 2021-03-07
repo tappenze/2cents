@@ -1,7 +1,8 @@
 import React from 'react';
 import { BrowserRouter as Router, Link, Route, Switch } from 'react-router-dom';
 import Navbar from '../components/Navbar';
-import { updateActivity, charityStatus } from '../connections/userConnections';
+import { updateActivity, charityStatus, getUser } from '../connections/userConnections';
+import { getTransactions } from '../connections/makeDonations';
 
 class Home extends React.Component {
   constructor() {
@@ -58,6 +59,13 @@ class Home extends React.Component {
     console.log('cDM state', this.state);
     await this.transition();
     console.log(this.props.history);
+
+		// let jwt = window.localStorage.getItem('jwt')
+		// let user = await getUser(jwt);
+		// const accessToken = user.message.accessToken;
+		// console.log(accessToken)
+		// let transactionsData = await getTransactions(accessToken);
+		// console.log(transactionsData);
   }
 
   handleClick = async () => {

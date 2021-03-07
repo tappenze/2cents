@@ -54,13 +54,13 @@ class Charity extends React.Component {
   render() {
     console.log(this.state);
     let bagClass =
-      this.state.charity === "boys and girls club" ? "selected" : "";
-    let bailClass = this.state.charity === "bail project" ? "selected" : "";
+      this.state.charity === "Boys and Girls Club" ? "selected" : "";
+    let bailClass = this.state.charity === "Bail Project" ? "selected" : "";
     let feedingClass =
-      this.state.charity === "feeding america" ? "selected" : "";
-    let roomClass = this.state.charity === "room to read" ? "selected" : "";
-    let unitedClass = this.state.charity === "united way" ? "selected" : "";
-    let waterClass = this.state.charity === "water.org" ? "selected" : "";
+      this.state.charity === "Feeding America" ? "selected" : "";
+    let roomClass = this.state.charity === "Room to Read" ? "selected" : "";
+    let unitedClass = this.state.charity === "United Way" ? "selected" : "";
+    let waterClass = this.state.charity === "Water.org" ? "selected" : "";
 
 		let mainContent
 		if (this.state.loaded) {
@@ -78,7 +78,7 @@ class Charity extends React.Component {
 									their full potential as productive, caring, responsible
 									citizens.{" "}
 									</p>
-									<button class="btnDarkGradient" id="boys and girls club"  onClick={this.handleClick}>
+									<button class="btnDarkGradient" id="Boys and Girls Club"  onClick={this.handleClick}>
 										select
 									</button>
 								</div>
@@ -93,7 +93,7 @@ class Charity extends React.Component {
 									money bail system—one person at a time. 100% of online
 									donations are used to bring people home
 									</p>
-									<button class="btnDarkGradient" id="bail project"  onClick={this.handleClick}>
+									<button class="btnDarkGradient" id="Bail Project"  onClick={this.handleClick}>
 										select
 									</button>
 								</div>
@@ -109,7 +109,7 @@ class Charity extends React.Component {
 									organization—a powerful and efficient network of 200 food
 									banks across the country.
 									</p>
-									<button class="btnDarkGradient" id="feeding america"  onClick={this.handleClick}>
+									<button class="btnDarkGradient" id="Feeding America"  onClick={this.handleClick}>
 										select
 									</button>
 								</div>
@@ -126,7 +126,7 @@ class Charity extends React.Component {
 									children in low-income communities by focusing on literacy and
 									gender equality in education.{" "}
 									</p>
-									<button class="btnDarkGradient" id="room to read"  onClick={this.handleClick}>
+									<button class="btnDarkGradient" id="Room to Read"  onClick={this.handleClick}>
 										select
 									</button>
 								</div>
@@ -141,7 +141,7 @@ class Charity extends React.Component {
 									caring power of communities around the world to advance the
 									common good.
 									</p>
-									<button class="btnDarkGradient" id="united way"  onClick={this.handleClick}>
+									<button class="btnDarkGradient" id="United Way"  onClick={this.handleClick}>
 										select
 									</button>
 								</div>
@@ -156,7 +156,7 @@ class Charity extends React.Component {
 									water and sanitation to the world in a way that's safe,
 									accessible, and cost-effective.
 									</p>
-									<button class="btnDarkGradient" id="water.org"  onClick={this.handleClick}>
+									<button class="btnDarkGradient" id="Water.org"  onClick={this.handleClick}>
 										select
 									</button>
 								</div>
