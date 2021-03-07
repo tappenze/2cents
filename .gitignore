@@ -1,4 +1,3 @@
-backend/package-lock.json
 backend/node_modules/@mapbox/node-pre-gyp/package.json
 backend/node_modules/@mapbox/node-pre-gyp/node_modules/semver/package.json
 backend/node_modules/@tootallnate/once/package.json
@@ -85,7 +84,6 @@ backend/node_modules/strip-ansi/package.json
 backend/node_modules/tar/package.json
 backend/node_modules/wide-align/package.json
 backend/node_modules/yallist/package.json
-backend/package-lock.json
 backend/node_modules/@mapbox/node-pre-gyp/package.json
 backend/node_modules/@mapbox/node-pre-gyp/node_modules/semver/package.json
 backend/node_modules/@tootallnate/once/package.json
@@ -130,8 +128,6 @@ backend/node_modules/tar/package.json
 backend/node_modules/wide-align/package.json
 backend/node_modules/yallist/package.json
 backend/node_modules/node-addon-api/package.json
-backend/package-lock.json
-backend/package-lock.json~Stashed changes
 backend/node_modules/@mapbox/node-pre-gyp/package.json
 backend/node_modules/@mapbox/node-pre-gyp/node_modules/semver/package.json
 backend/node_modules/@tootallnate/once/package.json

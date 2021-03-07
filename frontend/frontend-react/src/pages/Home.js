@@ -12,7 +12,7 @@ class Home extends React.Component {
       initial: false,
       active: false,
     };
-    console.log('constructor state', this.state);
+    // console.log('constructor state', this.state);
     this.transition = this.transition.bind(this);
   }
 
@@ -56,20 +56,20 @@ class Home extends React.Component {
       initial: result.message.active,
       active: result.message.active,
     });
-    console.log('cDM state', this.state);
+    // console.log('cDM state', this.state);
     await this.transition();
-    console.log(this.props.history);
+    // console.log(this.props.history);
 
 		let jwt = window.localStorage.getItem('jwt')
 		let userRes = await getUser(jwt);
 		let user = userRes.message
-		console.log("user is")
-		console.log(user)
+		// console.log("user is")
+		// console.log(user)
 		const accessToken = user.accessToken;
-		console.log(accessToken)
+		// console.log(accessToken)
 		let transactionsRes = await getTransactions(accessToken);
 		let transactions = transactionsRes.transactions;
-    console.log(transactions);
+    // console.log(transactions);
     let donations = await getDonationsFromTransactions(user, transactions, user.activityHistory);
     let updates = await updateDonations(jwt, donations);
   }
@@ -85,7 +85,7 @@ class Home extends React.Component {
   };
 
   isActiveText = () => {
-		console.log("here")
+		// console.log("here")
     if (this.state.active) {
       return <p class='landingP'>You currently have automatic donations on.</p>;
     } else {
@@ -98,7 +98,7 @@ class Home extends React.Component {
   };
 
   render() {
-    console.log('render state', this.state);
+    // console.log('render state', this.state);
     let mainContent;
     if (this.state.loaded) {
       mainContent = (

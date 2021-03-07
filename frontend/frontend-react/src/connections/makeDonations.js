@@ -90,8 +90,10 @@ const findCharity = (transaction, activityHistory) => {
   // console.log("charity is")
   // console.log(matchingActivity.charity);
   if (matchingActivity === undefined) {
+    // console.log("undefined")
     return undefined
   }
+  // console.log(matchingActivity.charity);
   return matchingActivity.charity;
 };
 

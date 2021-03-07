@@ -44,7 +44,7 @@ class DonationSwitchUser extends React.Component {
 	render() {
         
         const { match, location, history } = this.props
-        console.log(this.state)
+        // console.log(this.state)
         let globalClass = this.state.global?'--selectedRadio':'--noSelectedRadio'
         let userClass = this.state.global?'--noSelectedRadio':'--selectedRadio'
 		return(

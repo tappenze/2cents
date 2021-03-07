@@ -12,8 +12,8 @@ class LandingPage extends React.Component {
   }
 
   async redirect() {
-		console.log(this.props)
-		console.log(window.localStorage.getItem("jwt"))
+		// console.log(this.props)
+		// console.log(window.localStorage.getItem("jwt"))
 		if (window.localStorage.hasOwnProperty("jwt") === true) {
 			// console.log("jwt is not null")
 			
@@ -27,7 +27,7 @@ class LandingPage extends React.Component {
 
 		}
 		else {
-			console.log("jwt is null")
+			// console.log("jwt is null")
 		}
 	}
 
