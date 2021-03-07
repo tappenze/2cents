@@ -56,9 +56,9 @@ export const getDonationsFromTransactions = async (
   transactions,
   activityHistory
 ) => {
-  console.log('in the getdonationsfromtransactions func');
-  console.log(transactions);
-  console.log(activityHistory);
+  // console.log('in the getdonationsfromtransactions func');
+  // console.log(transactions);
+  // console.log(activityHistory);
   let donations = transactions.map((transaction) => {
     // take the transaction and process it into an object which is {timeDonated, charity, amount}
     let amount = Math.round((1 - transaction.amount) * 100) / 100;
@@ -76,7 +76,7 @@ export const getDonationsFromTransactions = async (
  * @param {Array} activityHistory the user's activity history
  * @return {String} the charity the transaction maps to
  */
-const findCharity = async (transaction, activityHistory) => {
+const findCharity = (transaction, activityHistory) => {
   activityHistory.reverse();
   let mostRecent = Date.parse(
     new Date(activityHistory[0].timeStarted).toISOString().slice(0, 10)
@@ -88,7 +88,8 @@ const findCharity = async (transaction, activityHistory) => {
     );
     return activity.active === true && time >= mostRecent;
   });
-  console.log(matchingActivity.charity);
+  // console.log("charity is")
+  // console.log(matchingActivity.charity);
   return matchingActivity.charity;
 };
 

@@ -51,9 +51,9 @@ class Donations extends React.Component {
     // use this to now get transactions
     // console.log(accessToken);
     let result = await getTransactions(accessToken);
-    console.log("result from getting the transactions");
-    console.log(result);
-    console.log(result.transactions);
+    // console.log("result from getting the transactions");
+    // console.log(result);
+    // console.log(result.transactions);
     this.setState({
       transactions: result.transactions,
       loaded: true,
@@ -66,7 +66,6 @@ class Donations extends React.Component {
     // this function will set the donations for the user given its id?
     // need to parse transactions here
     let updates = await updateDonations(jwt, donations);
-		console.log(updates)
   }
 
   // getDonationsFromTransactions = (transactions) => {
