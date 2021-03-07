@@ -34,8 +34,12 @@ userRouter.use(express.json());
  * endpoint for getting json of all users from database
  */
 userRouter.get('/users', auth.authenticateJWT, async function (req, res) {
-  const users = await User.find({});
-  res.json(users);
+  let result = await userService.getAllUsers();
+  if (result instanceof Error) {
+    res.status(400).send(result.message);
+  } else {
+    res.status(200).send(result);
+  }
 });
 
 /**

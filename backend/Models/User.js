@@ -18,7 +18,8 @@ const donationsHistorySchema = new mongoose.Schema(
   {
     timeDonated: {type: Date, required: true},
     charity: { type: String, required: true},
-    amount: {type: Number, required: true}
+    amount: {type: Number, required: true},
+    email: {type: String, required: true}
   },{_id: false}
 );
 // date 

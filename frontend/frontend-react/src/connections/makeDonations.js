@@ -46,17 +46,8 @@ export const updateDonations = async (jwt, donations) => {
   return { status: res.status, message: await parseBody(res) };
 };
 
-/**
- * This function calculates the donations array
- * @param {Array} transactions the list of transactions
- * @param {Array} activityHistory the user's activity history
- * @return {Array} the donations as an array
- */
-export const getDonationsFromTransactions = async (
-  transactions,
-  activityHistory
-) => {
-  // console.log('in the getdonationsfromtransactions func');
+export const getDonationsFromTransactions = async(user, transactions, activityHistory) => {
+  // console.log("in the getdonationsfromtransactions func");
   // console.log(transactions);
   // console.log(activityHistory);
   let donations = transactions.map((transaction) => {
@@ -64,7 +55,8 @@ export const getDonationsFromTransactions = async (
     let amount = Math.round((1 - transaction.amount) * 100) / 100;
     let charity = findCharity(transaction, activityHistory);
     let timeDonated = transaction.date;
-    let temp = { timeDonated: timeDonated, charity: charity, amount: amount };
+    let email = user.email;
+    let temp = {timeDonated: timeDonated, charity: charity, amount: amount, email: email};
     return temp;
   });
   return donations;

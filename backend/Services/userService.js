@@ -81,6 +81,21 @@ exports.getUserById = async function (id) {
 };
 
 /**
+ * This function returns all users
+ *
+ * @returns {JSON} the JSON object of the user
+ */
+exports.getAllUsers = async function () {
+  try {
+    result = await User.find({});
+    return result;
+  } catch (err) {
+    return err;
+  }
+};
+
+
+/**
  * This function takes in an email and a password and attempts to log in the user
  * corresponding to them.
  *
