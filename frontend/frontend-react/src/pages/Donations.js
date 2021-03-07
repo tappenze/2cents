@@ -144,13 +144,31 @@ class Donations extends React.Component {
             diff = 'Jan ' + donationDate.getDate();
           }
         }
-
+		let src
+		if (donation.charity === "Boys and Girls Club") {
+			src = bagClub
+		}
+		else if (donation.charity === "Bail Project") {
+			src = bailProject
+		}
+		else if (donation.charity === "Feeding America") {
+			src = feedingAmerica
+		}
+		else if (donation.charity === "Room to Read") {
+			src = roomToRead
+		}
+		else if (donation.charity === "United Way") {
+			src = unitedWay
+		}
+		else if (donation.charity === "Water.org") {
+			src = waterOrg
+		}
         return (
           <div>
             <hr />
             <div class='donationRow'>
               <div class='donationLeft'>
-                <img src={unitedWay} class='charityIcon' />
+                <img src={src} class='charityIcon' />
                 <p>
                   <strong>Donated</strong> to{' '}
                   <strong>{donation.charity}</strong>
