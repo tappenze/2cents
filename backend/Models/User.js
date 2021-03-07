@@ -16,7 +16,7 @@ const activityHistorySchema = new mongoose.Schema(
 
 const donationsHistorySchema = new mongoose.Schema(
   {
-    date: {type: Date, required: true},
+    timeDonated: {type: Date, required: true},
     charity: { type: String, required: true},
     amount: {type: Number, required: true}
   },{_id: false}
@@ -38,8 +38,8 @@ const userSchema = new mongoose.Schema(
     active: { type: Boolean, required: true, default: false },
     activityHistory: { type: [activityHistorySchema], required: true },
     donationsHistory: {type: [donationsHistorySchema], required: true},
-    accessToken: { type: String, required: true },
-    itemId: { type: String, required: true },
+    accessToken: { type: String, required: false },
+    itemId: { type: String, required: false },
   },
   { timestamps: true }
 );
