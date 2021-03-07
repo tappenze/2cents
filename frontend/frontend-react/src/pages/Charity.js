@@ -31,7 +31,6 @@ class Charity extends React.Component {
 		})
   }
 
-
 	handleClick = async (e) => {
 		await console.log(e)
 		await charitySelect(window.localStorage.getItem("jwt"), e.target.id)
@@ -157,7 +156,7 @@ class Charity extends React.Component {
 				<Navbar />
 				<div class="charityCenter">
 					<h1 class="landingH1">
-						Who's lives do you want to change?
+						Pick a cause that matters to you.
 					</h1>
 				</div>
 				{ mainContent }
