@@ -46,7 +46,7 @@ class LandingPage extends React.Component {
 
               <p class='landingP'>
                 Automatically donate to charities that matter to you by
-                rounding up to the nearest dollar on your purchases
+                rounding up to the nearest dollar on all your purchases
               </p>
               <div class=''>
                 <a class='btnGradient' href='/signin'>
@@ -105,7 +105,7 @@ class LandingPage extends React.Component {
           <div class='row'>
             <div class='col'>
               <div class='slider'>
-                <h1 class='landingH1'>Most major banks accepted</h1>
+                <h1 class='landingH1'>All major banks accepted</h1>
                 <div class='slider-row'></div>
               </div>
             </div>

@@ -117,10 +117,12 @@ class BankChoice extends React.Component {
               <div class="plaidCard">
                 <img src={plaidIcon} class='plaidImg'/>
                 <h1 class="plaidH1">
-                  text
+                  2cents uses Plaid to protect your data
                 </h1>
                 <p class="plaidP">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                  Plaid is a fintech company whose infastructure has powered applications such as Venmo,
+                  Acorns, Robinhood, Coin Base, and American Express to provide a seamless transaction experience.
+                  Working with Plaid, security is guaranteed.
                 </p>
                 <div class="plaidRow">
                   <br/>

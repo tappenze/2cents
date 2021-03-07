@@ -17,18 +17,22 @@ class Charity extends React.Component {
       loaded: false,
       charity: "none",
     };
+	
   }
+
 
   async componentWillMount() {
     if (window.localStorage.hasOwnProperty("jwt") === false) {
       this.props.history.push("/");
       return;
     }
+	
     let result = await charityStatus(window.localStorage.getItem("jwt"));
     this.setState({
       loaded: true,
       charity: result.message.charity,
     });
+	
   }
 
 
@@ -40,7 +44,7 @@ class Charity extends React.Component {
       await this.setState({
         charity: e.target.id,
       });
-      this.props.history.push("/home");
+      this.props.history.push("/signedup");
       // do some sort of popup to mark that the user is done signing up
     } else {
       await charitySelect(window.localStorage.getItem("jwt"), e.target.id);
@@ -51,9 +55,11 @@ class Charity extends React.Component {
   };
 
 
+
   render() {
     console.log(this.state);
     let bagClass =
+
       this.state.charity === "Boys and Girls Club" ? "selected" : "";
     let bailClass = this.state.charity === "Bail Project" ? "selected" : "";
     let feedingClass =
@@ -168,14 +174,31 @@ class Charity extends React.Component {
 		}
 		else {
 			mainContent = (
-				<div>
-					<div class="cardRow">
-
+				<div class="donationRowHeader">
+					<div class="flex-container">
+						<div class="unit">
+							<div class="heart">
+								<div class="heart-piece-0">
+								</div>
+								<div class="heart-piece-1">
+								</div>
+								<div class="heart-piece-2">
+								</div>
+								<div class="heart-piece-3">
+								</div>
+								<div class="heart-piece-4">
+								</div>
+								<div class="heart-piece-5">
+								</div>
+								<div class="heart-piece-6">
+								</div>
+								<div class="heart-piece-7">
+								</div>
+								<div class="heart-piece-8">
+								</div>
+							</div>
+						</div>
 					</div>
-					<div class="cardRow">
-						
-					</div>
-					
 				</div>
 			)
 		}
