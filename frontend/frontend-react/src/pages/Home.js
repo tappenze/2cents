@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Link, Route, Switch } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import { updateActivity, charityStatus, getUser } from '../connections/userConnections';
-import { getTransactions, transactionsToDonations } from '../connections/makeDonations';
+import { getTransactions } from '../connections/makeDonations';
 
 class Home extends React.Component {
   constructor() {
@@ -70,7 +70,6 @@ class Home extends React.Component {
 		let transactionsRes = await getTransactions(accessToken);
 		let transactions = transactionsRes.transactions;
 		console.log(transactions);
-		await transactionsToDonations(transactions, user.activityHistory, [])
   }
 
   handleClick = async () => {

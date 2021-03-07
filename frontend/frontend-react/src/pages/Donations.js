@@ -66,6 +66,7 @@ class Donations extends React.Component {
     // this function will set the donations for the user given its id?
     // need to parse transactions here
     let updates = await updateDonations(jwt, donations);
+		console.log(updates)
   }
 
   // getDonationsFromTransactions = (transactions) => {
