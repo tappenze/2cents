@@ -106,30 +106,11 @@ class Donations extends React.Component {
   render() {
     let mainContent;
     if (this.state.loaded) {
-      let unfiltered = this.state.transactions.map((transaction) => {
-        if (
-          transaction.amount > 0 &&
-          Math.ceil(transaction.amount) !== transaction.amount
-        ) {
-          let temp = transaction;
-          temp.amount = (
-            Math.round(
-              (Math.ceil(transaction.amount) - transaction.amount) * 100
-            ) / 100
-          ).toString();
-          if (temp.amount.length < 4) {
-            temp.amount += '0';
-          }
-          temp.charity = 'unitedWay';
-          return temp;
-        }
-      });
-      console.log(unfiltered);
-      console.log('here');
+
       let donations = this.state.donations;
 
       let donationContent = donations.map((donation) => {
-				console.log("amount is " + donation.amount)
+				// console.log("amount is " + donation.amount)
         let iconSrc = donation.charity;
         let donationDate = this.parseDate(donation.timeDonated);
         let diff = this.datediff(donationDate, new Date());
