@@ -6,6 +6,7 @@ import {
   Switch,
 } from 'react-router-dom'
 import Navbar from '../components/Navbar'
+import DonationSwitch from '../components/DonationSwitchGlobal'
 import { updateActivity, charityStatus } from "../connections/userConnections";
 
 
@@ -24,6 +25,7 @@ class Social extends React.Component {
 		return(
 			<div>
 				<Navbar />
+				<DonationSwitch />
 		      <h1>social</h1>
 		  </div>
 		)

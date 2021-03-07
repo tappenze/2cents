@@ -32,6 +32,10 @@ class Charity extends React.Component {
 		})
   }
 
+  transition = () => {
+
+  }
+
 	handleClick = async (e) => {
 		await console.log(e)
 		let result = await charityStatus(window.localStorage.getItem("jwt"))
@@ -40,7 +44,6 @@ class Charity extends React.Component {
 			await this.setState({
 				charity: e.target.id
 			})
-			this.props.history.push('/home')
 			// do some sort of popup to mark that the user is done signing up
 		}
 		else {
@@ -148,6 +151,14 @@ class Charity extends React.Component {
 								</div>
 						</div>
 					</div>
+					<div class="box-modal">
+						<div class="overlay"></div>
+						<div class="body-modal">
+						<div class="inner-body-modal">
+							hello it's me
+						</div>
+						</div>
+					</div>
 				</div>
 			)
 		}
@@ -159,6 +170,14 @@ class Charity extends React.Component {
 					</div>
 					<div class="cardRow">
 						
+					</div>
+					<div class="box-modal">
+						<div class="overlay"></div>
+						<div class="body-modal">
+						<div class="inner-body-modal">
+							hello it's me
+						</div>
+						</div>
 					</div>
 				</div>
 			)

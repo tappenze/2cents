@@ -10,6 +10,7 @@ import feedingAmerica from '../img/feedingAmericaIcon.svg'
 import roomToRead from '../img/roomToReadIcon.svg'
 import unitedWay from '../img/unitedWayIcon.svg'
 import waterOrg from '../img/waterOrgIcon.svg'
+import DonationSwitch from '../components/DonationSwitchUser'
 
 let BASE = "http://localhost:5000";
 
@@ -78,7 +79,10 @@ class Donations extends React.Component {
 		let unfiltered = this.state.transactions.map((transaction) => {
 			if (transaction.amount > 0 && (Math.ceil(transaction.amount) !== transaction.amount)) {
 				let temp = transaction
-				temp.amount = Math.round((Math.ceil(transaction.amount) - transaction.amount) * 100) / 100
+				temp.amount = (Math.round((Math.ceil(transaction.amount) - transaction.amount) * 100) / 100).toString()
+				if (temp.amount.length < 4) {
+					temp.amount += '0'
+				}
 				temp.charity = "unitedWay"
 				return temp
 			}
@@ -136,9 +140,9 @@ class Donations extends React.Component {
 
 			return (
 				<div>
-					
+					<hr/>
 					<div class="donationRow">
-						<hr/>
+						
 							
 						
 						<div class="donationLeft">
@@ -162,9 +166,6 @@ class Donations extends React.Component {
 		})
 		mainContent = (
 			<div>
-				<div class="donationRowHeader">
-					<h1>Text Text Text Text Text</h1>
-				</div>
 				
 				<div class="donationCol">
 					{ donationContent }
@@ -184,6 +185,7 @@ class Donations extends React.Component {
     return (
       <div>
         <Navbar />
+		<DonationSwitch />
         { mainContent }
       </div>
     );
