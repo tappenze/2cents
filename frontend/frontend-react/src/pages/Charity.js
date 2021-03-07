@@ -34,10 +34,22 @@ class Charity extends React.Component {
 
 	handleClick = async (e) => {
 		await console.log(e)
-		await charitySelect(window.localStorage.getItem("jwt"), e.target.id)
-		await this.setState({
-			charity: e.target.id
-		})
+		let result = await charityStatus(window.localStorage.getItem("jwt"))
+		if (result.message.charity === 'none') {
+			await charitySelect(window.localStorage.getItem("jwt"), e.target.id)
+			await this.setState({
+				charity: e.target.id
+			})
+			this.props.history.push('/home')
+			// do some sort of popup to mark that the user is done signing up
+		}
+		else {
+			await charitySelect(window.localStorage.getItem("jwt"), e.target.id)
+			await this.setState({
+				charity: e.target.id
+			})
+		}
+		
 
 	}
 

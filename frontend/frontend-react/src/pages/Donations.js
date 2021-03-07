@@ -4,6 +4,12 @@ import Navbar from "../components/Navbar";
 import { getUser } from "../connections/userConnections";
 import axios from "axios";
 import jwt_decode from "jwt-decode";
+import bagClub from '../img/bagClubIcon.svg'
+import bailProject from '../img/bailProjectIcon.svg'
+import feedingAmerica from '../img/feedingAmericaIcon.svg'
+import roomToRead from '../img/roomToReadIcon.svg'
+import unitedWay from '../img/unitedWayIcon.svg'
+import waterOrg from '../img/waterOrgIcon.svg'
 
 let BASE = "http://localhost:5000";
 
@@ -54,6 +60,17 @@ class Donations extends React.Component {
 	})
   }
 
+  parseDate = (str) => {
+    var mdy = str.split('-');
+    return new Date(mdy[0], mdy[1]-1, mdy[2]);
+  }
+
+  datediff = (first, second) => {
+    // Take the difference between the dates and divide by milliseconds per day.
+    // Round to nearest whole number to deal with DST.
+    return Math.round((second-first)/(1000*60*60*24));
+  }
+
 
   render() {
 	let mainContent
@@ -62,28 +79,78 @@ class Donations extends React.Component {
 			if (transaction.amount > 0 && (Math.ceil(transaction.amount) !== transaction.amount)) {
 				let temp = transaction
 				temp.amount = Math.round((Math.ceil(transaction.amount) - transaction.amount) * 100) / 100
+				temp.charity = "unitedWay"
 				return temp
 			}
 		})
 		console.log(unfiltered)
 		let donations = unfiltered.filter(data => data !== undefined)
 		console.log(donations)
+		
 		let donationContent = donations.map((donation) => {
+			let iconSrc = donation.charity
+			let donationDate = this.parseDate(donation.date)
+			let diff = this.datediff(donationDate, new Date())
+			if (diff < 21) {
+				diff += "d"
+			}
+			else {
+				let monthInt = donationDate.getMonth()
+				if (monthInt > 10) {
+					diff = "Dec " + donationDate.getDate()
+				}
+				else if (monthInt > 9) {
+					diff = "Nov " + donationDate.getDate()
+				}
+				else if (monthInt > 8) {
+					diff = "Oct " + donationDate.getDate()
+				}
+				else if (monthInt > 7) {
+					diff = "Sep " + donationDate.getDate()
+				}
+				else if (monthInt > 6) {
+					diff = "Aug " + donationDate.getDate()
+				}
+				else if (monthInt > 5) {
+					diff = "Jul " + donationDate.getDate()
+				}
+				else if (monthInt > 4) {
+					diff = "Jun " + donationDate.getDate()
+				}
+				else if (monthInt > 3) {
+					diff = "May " + donationDate.getDate()
+				}
+				else if (monthInt > 2) {
+					diff = "Apr " + donationDate.getDate()
+				}
+				else if (monthInt > 1) {
+					diff = "Mar " + donationDate.getDate()
+				}
+				else if (monthInt > 0) {
+					diff = "Feb " + donationDate.getDate()
+				}
+				else {
+					diff = "Jan " + donationDate.getDate()
+				}
+			}
+
 			return (
 				<div>
 					
 					<div class="donationRow">
+						<hr/>
+							
 						
 						<div class="donationLeft">
-							
-								<h4>
-									donated to *insert charity here*<br />payment to {donation.name} on {donation.date}
-								</h4>
+							<img src={ unitedWay } class="charityIcon"/>
+							<p>
+								<strong>Donated</strong> to <strong>*insert charity here*</strong><br />{diff}
+							</p>
 								
 						</div>
 						<div class="donationRight">
 							<p>
-								{donation.amount} {donation.iso_currency_code}
+								+ {donation.amount} $
 							</p>
 						</div>
 					
@@ -96,7 +163,7 @@ class Donations extends React.Component {
 		mainContent = (
 			<div>
 				<div class="donationRowHeader">
-					<h1>loaded</h1>
+					<h1>Text Text Text Text Text</h1>
 				</div>
 				
 				<div class="donationCol">
