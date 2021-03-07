@@ -46,6 +46,7 @@ export const createPlaid = (options: PlaidLinkOptions) => {
   state.plaid = window.Plaid.create({
     ...config,
     onExit: (...params: any) => {
+      console.log("factory tsx on exit func")
       state.open = false;
       config.onExit && config.onExit(...params);
       state.onExitCallback && state.onExitCallback();
@@ -56,12 +57,14 @@ export const createPlaid = (options: PlaidLinkOptions) => {
     if (!state.plaid) {
       return;
     }
+    console.log("factory tsx on open func")
     state.open = true;
     state.onExitCallback = null;
     state.plaid.open();
   };
 
   const exit = (exitOptions: any, callback: Function) => {
+    console.log("factory tsx exit const ")
     if (!state.open || !state.plaid) {
       callback && callback();
       return;
@@ -77,7 +80,7 @@ export const createPlaid = (options: PlaidLinkOptions) => {
     if (!state.plaid) {
       return;
     }
-
+    console.log("typescript destroy func")
     state.plaid.destroy();
     state.plaid = null;
   };

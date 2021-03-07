@@ -49,6 +49,7 @@ export const usePlaidLink = (options: PlaidLinkOptions) => {
     const next = createPlaid({
       ...options,
       onLoad: () => {
+        console.log("in use plaid links in onload of create plaid")
         setIframeLoaded(true);
         options.onLoad && options.onLoad();
       },
