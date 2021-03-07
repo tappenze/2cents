@@ -81,7 +81,7 @@ class Social extends React.Component {
 				temp.amount += "0";
 			}
 			// change charity here!!!
-			temp.charity = "unitedWay";
+			temp.charity = "United Way";
 			return temp;
 			}
 		});
@@ -92,7 +92,25 @@ class Social extends React.Component {
 		let donationContent = donations.map((donation) => {
 			// console.log(donation)
 			// console.log(donation.timeDonated)
-			let iconSrc = donation.charity;
+			let src
+			if (donation.charity === "Boys and Girls Club") {
+				src = bagClub
+			}
+			else if (donation.charity === "Bail Project") {
+				src = bailProject
+			}
+			else if (donation.charity === "Feeding America") {
+				src = feedingAmerica
+			}
+			else if (donation.charity === "Room to Read") {
+				src = roomToRead
+			}
+			else if (donation.charity === "United Way") {
+				src = unitedWay
+			}
+			else if (donation.charity === "Water.org") {
+				src = waterOrg
+			}
 			let donationDate = this.parseDate(donation.timeDonated);
 			let diff = this.datediff(donationDate, new Date());
 			if (diff < 21) {
@@ -131,7 +149,7 @@ class Social extends React.Component {
 				<hr />
 				<div class="donationRow">
 				<div class="donationLeft">
-					<img src={unitedWay} class="charityIcon" />
+					<img src={src} class="charityIcon" />
 					<p>
 					<strong>{donation.email}</strong>
 					<br/>

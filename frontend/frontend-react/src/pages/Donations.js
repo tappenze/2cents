@@ -163,6 +163,10 @@ class Donations extends React.Component {
 		else if (donation.charity === "Water.org") {
 			src = waterOrg
 		}
+		let amount = donation.amount
+		if (amount.toString().length < 4) {
+			amount += "0"
+		}
         return (
           <div>
             <hr />
