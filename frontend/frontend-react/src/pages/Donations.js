@@ -60,7 +60,7 @@ class Donations extends React.Component {
     });
     // create a donations array with fields
     //time donated, charity, and amount
-    let donations = await getDonationsFromTransactions(result.transactions, res.message.activityHistory);
+    let donations = await getDonationsFromTransactions(res.message, result.transactions, res.message.activityHistory);
     console.log("donations are")
     console.log(donations)
     // this function will set the donations for the user given its id?

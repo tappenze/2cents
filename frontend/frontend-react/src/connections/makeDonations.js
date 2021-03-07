@@ -46,7 +46,7 @@ export const updateDonations = async (jwt, donations) => {
   return { status: res.status, message: await parseBody(res) };
 };
 
-export const getDonationsFromTransactions = async(transactions, activityHistory) => {
+export const getDonationsFromTransactions = async(user, transactions, activityHistory) => {
   console.log("in the getdonationsfromtransactions func");
   console.log(transactions);
   console.log(activityHistory);
@@ -55,7 +55,8 @@ export const getDonationsFromTransactions = async(transactions, activityHistory)
     let amount = Math.round((1 - transaction.amount)*100)/100;
     let charity = "unitedMay";  //this is chris's job
     let timeDonated = transaction.date;
-    let temp = {timeDonated: timeDonated, charity: charity, amount: amount};
+    let email = user.email;
+    let temp = {timeDonated: timeDonated, charity: charity, amount: amount, email: email};
     return temp;
   });
   return donations;
