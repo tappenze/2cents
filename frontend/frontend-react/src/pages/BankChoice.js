@@ -6,8 +6,9 @@ import { PlaidLink } from "./PlaidLink";
 import axios from "axios";
 // import Link from './Link';
 
-class BankChoice extends React.Component {
+let BASE = 'http://localhost:5000';
 
+class BankChoice extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -15,13 +16,14 @@ class BankChoice extends React.Component {
       password: "",
       linkToken: "",
       accessToken: "",
-      itemID: ""
+      itemID: "",
     };
-
   }
   componentDidMount() {
-    console.log("localStorage.get", window.localStorage.getItem("jwt"));
+    console.log("mounted");
+    console.log("banks jwt", window.localStorage.getItem("jwt"));
     this.createLinkToken();
+    console.log("post createLinkToken");
   }
 
   //   handlePasswordChange = (event) => {
@@ -45,24 +47,39 @@ class BankChoice extends React.Component {
 
   // pass the link token to this function
   getAccessToken = async (publicToken) => {
-    console.log("client side public token", publicToken)
+    console.log("client side public token", publicToken);
     //sends the public token to the app server
-    const res = await axios.post('http://localhost:5000/api/get_access_token', {publicToken: publicToken})
+    const res = await axios.post("http://localhost:5000/api/get_access_token", {
+      publicToken: publicToken,
+    });
     console.log("return from get access token with public toke  is");
     console.log(res);
-    const data = res.data
+    const data = res.data;
     //updates state with permanent access token
-    this.setState({ accessToken: data.access_token})
-    this.setState({ itemID: data.item_id})
-  }
+    this.setState({ accessToken: data.access_token });
+    this.setState({ itemID: data.item_id });
+    // now update the user's information
+
+    let info= {accessToken: data.access_token, itemID: data.item_id};
+    console.log("about to make call with info being:")
+    console.log(info)
+    let result = await fetch(BASE + '/users/bank-choice', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(info),
+    });
+    console.log(result)
+  };
 
   handleSubmit = async (event) => {
     // just make the call to the backend here and console log it
   };
 
   getLinkToken = () => {
-    console.log("getting link token for our little button")
-    console.log(this.state.linkToken)
+    console.log("getting link token for our little button");
+    console.log(this.state.linkToken);
     return this.state.linkToken;
   };
 
@@ -89,47 +106,6 @@ class BankChoice extends React.Component {
         >
           Open Link and connect your bank!
         </PlaidLink>
-        {/* <div class="container" id="container">
-          <div class="forms-container">
-            <div class="signin-signup">
-              <form action="#" class="sign-in-form">
-                <h2 class="title">Enter bank credentials</h2>
-                <div class="input-field">
-                  <i class="fas fa-user"></i>
-                  <input type="text" placeholder="Username" />
-                </div>
-                <div class="input-field">
-                  <i class="fas fa-lock"></i>
-                  <input type="password" placeholder="Password" />
-                </div>
-                <input type="submit" value="Login" class="btnGradient" />
-              </form>
-              <form action="#" class="sign-up-form" onSubmit={this.handleSubmit}>
-                <h2 class="title">Sign up</h2>
-                <div class="input-field">
-                  <i class="fas fa-envelope"></i>
-                  <input
-                    class="emailInput"
-                    type="text"
-                    placeholder="Email"
-                    onChange={this.handleUserNameChange}
-                  />
-                </div>
-                <br />
-                <div class="input-field">
-                  <i class="fas fa-lock"></i>
-                  <input
-                    class="passInput"
-                    type="password"
-                    placeholder="Password"
-                    onChange={this.handlePasswordChange}
-                  />
-                </div>
-                <input type="submit" class="btnGradient" value="Sign up" />
-              </form>
-            </div>
-          </div>
-        </div> */}
       </div>
     );
   }

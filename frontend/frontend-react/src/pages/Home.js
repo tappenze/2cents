@@ -36,7 +36,7 @@ class Home extends React.Component {
 	componentDidMount() {
 		this.transition()
 		console.log(this.props.history)
-		console.log(window.localStorage.getItem("jwt"))
+		console.log("home jwt", window.localStorage.getItem("jwt"))
 		if (window.localStorage.getItem("jwt") == 'null') {
 			this.props.history.push("/")
 		}
