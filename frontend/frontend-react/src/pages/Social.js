@@ -65,13 +65,14 @@ class Social extends React.Component {
 	render() {
 		let mainContent;
 		if (this.state.loaded) {
+
 		let donations = this.state.allDonations
 		// console.log("donations", donations);
 
 		let donationContent = donations.map((donation) => {
 			// console.log(donation)
 			// console.log(donation.timeDonated)
-			let iconSrc = donation.charity;
+			
 			let donationDate = this.parseDate(donation.timeDonated);
 			let diff = this.datediff(donationDate, new Date());
 			if (diff < 21) {
@@ -128,7 +129,7 @@ class Social extends React.Component {
 					</p>
 				</div>
 				<div class="donationRight">
-					<p>+ {donation.amount} $</p>
+					<p>+ {Math.floor(donation.amount * 100)} &#162;</p>
 				</div>
 				</div>
 			</div>

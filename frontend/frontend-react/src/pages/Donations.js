@@ -143,12 +143,29 @@ class Donations extends React.Component {
           }
         }
 
-        let src = unitedWay;
-        if (donation.charity === 'Boys and Girls Club') src = bagClub;
-        else if (donation.charity === 'Bail Project') src = bailProject;
-        else if (donation.charity === 'Feeding America') src = feedingAmerica;
-        else if (donation.charity === 'Room to Read') src = roomToRead;
-        else if (donation.charity === 'Water.org') src = waterOrg;
+		let src
+		if (donation.charity === "Boys and Girls Club") {
+			src = bagClub
+		}
+		else if (donation.charity === "Bail Project") {
+			src = bailProject
+		}
+		else if (donation.charity === "Feeding America") {
+			src = feedingAmerica
+		}
+		else if (donation.charity === "Room to Read") {
+			src = roomToRead
+		}
+		else if (donation.charity === "United Way") {
+			src = unitedWay
+		}
+		else if (donation.charity === "Water.org") {
+			src = waterOrg
+		}
+		let amount = donation.amount
+		if (amount.toString().length < 4) {
+			amount += "0"
+		}
 
         return (
           <div>
@@ -164,7 +181,7 @@ class Donations extends React.Component {
                 </p>
               </div>
               <div class='donationRight'>
-                <p>+ {donation.amount} $</p>
+                <p>+ {Math.floor(donation.amount * 100)} &#162;</p>
               </div>
             </div>
           </div>
