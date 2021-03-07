@@ -35,23 +35,23 @@ class SignedUp extends React.Component {
               <div class="flex-container">
 					<div class="unit">
 						<div class="heart">
-							<div class="heart-piece-0">
+							<div class="heart-piece-02">
 							</div>
-							<div class="heart-piece-1">
+							<div class="heart-piece-12">
 							</div>
-							<div class="heart-piece-2">
+							<div class="heart-piece-22">
 							</div>
-							<div class="heart-piece-3">
+							<div class="heart-piece-32">
 							</div>
-							<div class="heart-piece-4">
+							<div class="heart-piece-42">
 							</div>
-							<div class="heart-piece-5">
+							<div class="heart-piece-52">
 							</div>
-							<div class="heart-piece-6">
+							<div class="heart-piece-62">
 							</div>
-							<div class="heart-piece-7">
+							<div class="heart-piece-72">
 							</div>
-							<div class="heart-piece-8">
+							<div class="heart-piece-82">
 							</div>
 						</div>
 					</div>
