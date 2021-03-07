@@ -27,7 +27,7 @@ const jwt = require('jsonwebtoken');
  * @returns {String} the string response (Success or Failure)
  */
 exports.addUser = async function (addMe) {
-  console.log('in add user with new models');
+  // console.log('in add user with new models');
   try {
     addMe.email = addMe.email.toLowerCase();
     let exists = await User.find({ email: addMe.email });
@@ -236,8 +236,8 @@ exports.updateActivity = async function (user) {
  * @returns {String} the string response
  */
 exports.bankchoice = async function (user) {
-  console.log('in bank choice');
-  console.log(user);
+  // console.log('in bank choice');
+  // console.log(user);
   try {
     let filter = { _id: user.id };
     let update = {

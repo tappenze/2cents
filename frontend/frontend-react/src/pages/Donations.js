@@ -51,9 +51,9 @@ class Donations extends React.Component {
     // use this to now get transactions
     // console.log(accessToken);
     let result = await getTransactions(accessToken);
-    console.log("result from getting the transactions");
-    console.log(result);
-    console.log(result.transactions);
+    // console.log("result from getting the transactions");
+    // console.log(result);
+    // console.log(result.transactions);
     this.setState({
       transactions: result.transactions,
       loaded: true,
