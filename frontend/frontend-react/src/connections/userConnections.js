@@ -4,9 +4,9 @@
  *
  */
 
-import jwt_decode from 'jwt-decode';
+import jwt_decode from "jwt-decode";
 
-let BASE = 'http://localhost:5000';
+let BASE = "http://localhost:5000";
 
 /**
  * This function connects to the backend to signup a user
@@ -18,14 +18,14 @@ export const signup = async (email, password) => {
   let data = {
     email: email,
     password: password,
-    charity: 'none',
+    charity: "none",
     active: true,
   };
 
-  let res = await fetch(BASE + '/users/signup', {
-    method: 'POST',
+  let res = await fetch(BASE + "/users/signup", {
+    method: "POST",
     headers: {
-      'Content-Type': 'application/json',
+      "Content-Type": "application/json",
     },
     body: JSON.stringify(data),
   });
@@ -44,15 +44,29 @@ export const login = async (email, password) => {
     password: password,
   };
 
-  let res = await fetch(BASE + '/users/login', {
-    method: 'POST',
+  let res = await fetch(BASE + "/users/login", {
+    method: "POST",
     headers: {
-      'Content-Type': 'application/json',
+      "Content-Type": "application/json",
     },
     body: JSON.stringify(data),
   });
 
   return { status: res.status, message: await res.text() };
+};
+
+export const getUser = async (jwt) => {
+  let id = jwt_decode(jwt).id;
+
+  let res = await fetch(BASE + "/users/id/" + id, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: "Bearer " + jwt,
+    },
+  });
+
+  return { status: res.status, message: await parseBody(res) };
 };
 
 /**
@@ -68,19 +82,17 @@ export const charitySelect = async (jwt, charity) => {
     charity: charity,
   };
 
-  let res = await fetch(BASE + '/users/charity-select', {
-    method: 'PUT',
+  let res = await fetch(BASE + "/users/charity-select", {
+    method: "PUT",
     headers: {
-      'Content-Type': 'application/json',
-      'Authorization': 'Bearer ' + jwt,
+      "Content-Type": "application/json",
+      Authorization: "Bearer " + jwt,
     },
     body: JSON.stringify(data),
   });
 
   return { status: res.status, message: await parseBody(res) };
 };
-
-
 
 /**
  * This function gets a user's charity status
@@ -90,17 +102,16 @@ export const charitySelect = async (jwt, charity) => {
 export const charityStatus = async (jwt) => {
   let id = jwt_decode(jwt).id;
 
-  let res = await fetch(BASE + '/users/' + id + '/charity-status', {
-    method: 'GET',
+  let res = await fetch(BASE + "/users/" + id + "/charity-status", {
+    method: "GET",
     headers: {
-      'Content-Type': 'application/json',
-      'Authorization': 'Bearer ' + jwt,
+      "Content-Type": "application/json",
+      Authorization: "Bearer " + jwt,
     },
   });
-  console.log("finished res")
+  console.log("finished res");
   return { status: res.status, message: await parseBody(res) };
 };
-
 
 /**
  * This function updates the user's charity activity
@@ -115,18 +126,17 @@ export const updateActivity = async (jwt, active) => {
     active: active,
   };
 
-  let res = await fetch(BASE + '/users/update-activity', {
-    method: 'PUT',
+  let res = await fetch(BASE + "/users/update-activity", {
+    method: "PUT",
     headers: {
-      'Content-Type': 'application/json',
-      'Authorization': 'Bearer ' + jwt,
+      "Content-Type": "application/json",
+      Authorization: "Bearer " + jwt,
     },
     body: JSON.stringify(data),
   });
 
   return { status: res.status, message: await parseBody(res) };
 };
-
 
 /**
  * This function parses the response since it could either be of type text or json
