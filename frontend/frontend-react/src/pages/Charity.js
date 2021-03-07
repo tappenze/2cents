@@ -12,6 +12,7 @@ import { charitySelect, charityStatus, updateActivity } from '../connections/use
 
 class Charity extends React.Component {
   constructor() {
+		
     super();
     this.state = {
       charity: 'none',
