@@ -10,7 +10,7 @@ import logo from '../img/2centsLogo.svg'
 
 class Navbar extends React.Component {
 	signout = () => {
-		window.localStorage.setItem("jwt", null)
+		window.localStorage.removeItem("jwt")
 	}
 
 	render() {
