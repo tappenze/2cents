@@ -61,6 +61,51 @@ class LandingPage extends React.Component {
         </section>
         <section class='info'>
           <div class='row'>
+            <div class="spinContainer1">
+              <div class="box">
+                <div class="spin-container">
+                  <div class="shape">
+                    <div class="bd1"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="spinContainer2">
+              <div class="box">
+                <div class="spin-container">
+                  <div class="shape">
+                    <div class="bd"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="spinContainer3">
+              <div class="box">
+                <div class="spin-container">
+                  <div class="shape">
+                    <div class="bd2"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="spinContainer4">
+              <div class="box">
+                <div class="spin-container">
+                  <div class="shape">
+                    <div class="bd1"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="spinContainer5">
+              <div class="box">
+                <div class="spin-container">
+                  <div class="shape">
+                    <div class="bd"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
             <div class='col bios'>
               <i class='fas fa-shield-alt'></i>
               <h1>Secure</h1>
