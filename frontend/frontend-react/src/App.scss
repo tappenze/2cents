@@ -1406,3 +1406,77 @@ $speed: 40s;
   height: 35%;
   border-radius: 20px;
 }
+
+.donationRow {
+  display: flex;
+  flex-direction: col;
+  align-content: flex-start;
+  justify-content: center;
+  width: 100vw;
+  height: 30vh;
+  box-shadow: 0 2px 4px 0 rgba(0,0,0,.2);
+  
+}
+
+.donationRowHeader {
+  display: flex;
+  flex-direction: col;
+  align-content: flex-start;
+  justify-content: center;
+  width: 100vw;
+  height: 10vh;
+  text-align: center;
+  hr {
+    border: 1px solid #FFFF00;
+    height: 0px;
+    margin-left: 100px;
+    margin-right: 100px;
+    padding: 100px 0px;
+  }
+}
+
+.donationCol {
+  display: flex;
+  flex-direction: col;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  justify-content: center;
+  width: 100vw;
+}
+
+
+
+
+
+.donationLeft, .donationRight {
+  flex: 1;
+}
+
+
+
+.donationLeft {
+  display: flex;
+  flex-direction: col;
+  tex-align: left;
+  justify-content: flex-start;
+  align-items: flex-start;
+  margin-left: 100px;
+  position: relative;
+  
+}
+
+
+
+
+
+.donationRight {
+  display: flex;
+  text-align: right;
+  justify-content: flex-end;
+  align-items: flex-start;
+  margin-right: 100px;
+  p {
+    color: #bf9feb;
+  }
+
+}

@@ -11,6 +11,7 @@ class Donations extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+	  loaded: false,
       jwt: "",
       accessToken: "",
       transactions: [],
@@ -47,15 +48,76 @@ class Donations extends React.Component {
     console.log("result from getting the transactions");
     console.log(result);
     console.log(result.data.transactions);
-    this.setState({ transactions: result.data.transactions})
+    this.setState({
+		transactions: result.data.transactions,
+		loaded: true
+	})
   }
 
 
   render() {
+	let mainContent
+	if (this.state.loaded) {
+		let unfiltered = this.state.transactions.map((transaction) => {
+			if (transaction.amount > 0 && (Math.ceil(transaction.amount) !== transaction.amount)) {
+				let temp = transaction
+				temp.amount = Math.round((Math.ceil(transaction.amount) - transaction.amount) * 100) / 100
+				return temp
+			}
+		})
+		console.log(unfiltered)
+		let donations = unfiltered.filter(data => data !== undefined)
+		console.log(donations)
+		let donationContent = donations.map((donation) => {
+			return (
+				<div>
+					
+					<div class="donationRow">
+						
+						<div class="donationLeft">
+							
+								<h4>
+									donated to *insert charity here*<br />payment to {donation.name} on {donation.date}
+								</h4>
+								
+						</div>
+						<div class="donationRight">
+							<p>
+								{donation.amount} {donation.iso_currency_code}
+							</p>
+						</div>
+					
+						
+					</div>
+					
+				</div>
+			)
+		})
+		mainContent = (
+			<div>
+				<div class="donationRowHeader">
+					<h1>loaded</h1>
+				</div>
+				
+				<div class="donationCol">
+					{ donationContent }
+				</div>
+				
+			</div>
+		)
+	}
+	else {
+		mainContent = (
+			<div class="donationRowHeader">
+				<h1>loaded</h1>
+			</div>
+		)
+	}
+	
     return (
       <div>
         <Navbar />
-        <h1>donations</h1>
+        { mainContent }
       </div>
     );
   }
