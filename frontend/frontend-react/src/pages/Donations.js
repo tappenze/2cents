@@ -92,6 +92,7 @@ class Donations extends React.Component {
   };
 
   render() {
+
     let mainContent;
     if (this.state.loaded) {
       let unfiltered = this.state.transactions.map((transaction) => {

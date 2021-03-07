@@ -221,7 +221,7 @@ form.sign-in-form {
 }
 
 .landing {
-
+  
 }
 
 .signin {
@@ -535,104 +535,104 @@ form.sign-in-form {
   
     
 .heart-piece-4 {
-  animation: piece-4 3.2s infinite;
-  left: 64px;
-  animation-delay: 0.60s;
+  animation: piece-4 0.5s infinite;
+  left: -88px;
+  animation-delay: 0.09375s;
   background-color: #9FA5EB;
   position: absolute;
-  top: -5px;
+  top: 90px;
   height: 10px;
   width: 10px;
   border-radius: 5px;
 }
 
 .heart-piece-3 {
-  animation: piece-3 3.2s infinite;
-  left: 48px;
-  animation-delay: 0.45s;
+  animation: piece-3 0.5s infinite;
+  left: -104px;
+  animation-delay: 0.0703125s;
   background-color: #B1A4EB;
   position: absolute;
-  top: -5px;
+  top: 90px;
   height: 10px;
   width: 10px;
   border-radius: 5px;
 }
 .heart-piece-5 {
-  animation: piece-3 3.2s infinite;
-  left: 80px;
-  animation-delay: 0.45s;
+  animation: piece-3 0.5s infinite;
+  left: -72px;
+  animation-delay: 0.0703125s;
   background-color: #B1A4EB;
   position: absolute;
-  top: -5px;
+  top: 90px;
   height: 10px;
   width: 10px;
   border-radius: 5px;
 }
 
 .heart-piece-2 {
-  animation: piece-2 3.2s infinite;
-  left: 32px;
-  animation-delay: 0.30s;
+  animation: piece-2 0.5s infinite;
+  left: -120px;
+  animation-delay: 0.046875s;
   background-color: #C2A2EB;
   position: absolute;
-  top: -5px;
+  top: 90px;
   height: 10px;
   width: 10px;
   border-radius: 5px;
 }
 .heart-piece-6 {
-  animation: piece-2 3.2s infinite;
-  left: 96px;
-  animation-delay: 0.30s;
+  animation: piece-2 0.5s infinite;
+  left: -56px;
+  animation-delay: 0.046875s;
   background-color: #C2A2EB;
   position: absolute;
-  top: -5px;
+  top: 90px;
   height: 10px;
   width: 10px;
   border-radius: 5px;
 }
 
 .heart-piece-1 {
-  animation: piece-1 3.2s infinite;
-  left: 16px;
-  animation-delay: 0.15s;
+  animation: piece-1 0.5s infinite;
+  left: -136px;
+  animation-delay: 0.0234375s;
   background-color: #D4A1EB;
   position: absolute;
-  top: -5px;
+  top: 90px;
   height: 10px;
   width: 10px;
   border-radius: 5px;
 }
 .heart-piece-7 {
-  animation: piece-1 3.2s infinite;
-  left: 112px;
-  animation-delay: 0.15s;
+  animation: piece-1 0.5s infinite;
+  left: -40px;
+  animation-delay: 0.0234375s;
   background-color: #D4A1EB;
   position: absolute;
-  top: -5px;
+  top: 90px;
   height: 10px;
   width: 10px;
   border-radius: 5px;
 }
 
 .heart-piece-0 {
-  animation: piece-0 3.2s infinite;
-  left: 0px;
+  animation: piece-0 0.5s infinite;
+  left: -152px;
   animation-delay: 0s;
   background-color: #E59FEB;
   position: absolute;
-  top: -5px;
+  top: 90px;
   height: 10px;
   width: 10px;
   border-radius: 5px;
 }
 .heart-piece-8 {
-  animation: piece-0 3.2s infinite;
-  left: 128px;
+  animation: piece-0 0.5s infinite;
+  left: -24px;
   animation-delay: 0s;
   background-color: #E59FEB;
   position: absolute;
-  top: -5px;
+  top: 90px;
   height: 10px;
   width: 10px;
   border-radius: 5px;
@@ -643,135 +643,135 @@ form.sign-in-form {
 @keyframes piece-4 {
   0% {
   height: 10px;
-  top: -5px;
+  top: 90px;
  }
  10% {
   height: 10px;
-  top: -5px;
+  top: 90px;
  }
  45% {
   height: 94px;
-  top: -23px;
+  top: 72px;
  }
  55% {
   height: 94px;
-  top: -23px;
+  top: 72px;
  }
  90% {
   height: 10px;
-  top: -5px;
+  top: 90px;
  }
  100% {
   height: 10px;
-  top: -5px;
+  top: 90px;
  }
 }
 
 @keyframes piece-3 {
  0% {
   height: 10px;
-  top: -5px;
+  top: 90px;
  }
  10% {
   height: 10px;
-  top: -5px;
+  top: 90px;
  }
  45% {
   height: 90px;
-  top: -31px;
+  top: 64px;
  }
  55% {
   height: 90px;
-  top: -31px;
+  top: 64px;
  }
  90% {
   height: 10px;
-  top: -5px;
+  top: 90px;
  }
  100% {
   height: 10px;
-  top: -5px;
+  top: 90px;
  }
 }
 
 @keyframes piece-2 {
  0% {
   height: 10px;
-  top: -5px;
+  top: 90px;
  }
  10% {
   height: 10px;
-  top: -5px;
+  top: 90px;
  }
  45% {
   height: 80px;
-  top: -37px;
+  top: 58px;
  }
  55% {
   height: 80px;
-  top: -37px;
+  top: 58px;
  }
  90% {
   height: 10px;
-  top: -5px;
+  top: 90px;
  }
  100% {
   height: 10px;
-  top: -5px;
+  top: 90px;
  }
 }
 
 @keyframes piece-1 {
  0% {
   height: 10px;
-  top: -5px;
+  top: 90px;
  }
  10% {
   height: 10px;
-  top: -5px;
+  top: 90px;
  }
  45% {
   height: 60px;
-  top: -31px;
+  top: 64px;
  }
  55% {
   height: 60px;
-  top: -31px;
+  top: 64px;
  }
  90% {
   height: 10px;
-  top: -5px;
+  top: 90px;
  }
  100% {
   height: 10px;
-  top: -5px;
+  top: 90px;
  }
 }
 
 @keyframes piece-0 {
  0% {
   height: 10px;
-  top: -5px;
+  top: 90px;
  }
  10% {
   height: 10px;
-  top: -5px;
+  top: 90px;
  }
  45% {
   height: 30px;
-  top: -15px;
+  top: 80px;
  }
  55% {
   height: 30px;
-  top: -15px;
+  top: 80px;
  }
  90% {
   height: 10px;
-  top: -5px;
+  top: 90px;
  }
  100% {
   height: 10px;
-  top: -5px;
+  top: 90px;
  }
 }
 
@@ -809,6 +809,10 @@ form.sign-in-form {
     color: #ccc;
     font-size: 50px;
     height: 10vh;
+  }
+  p {
+    font-size: 20px;
+    margin: 0px 60px;
   }
 }
 
@@ -906,7 +910,7 @@ form.sign-in-form {
 
 .moreInfo {
   width: 100%;
-  height: 50vh;
+  height: 45vh;
   background: #ffffff;
 }
 
@@ -1357,8 +1361,8 @@ $speed: 40s;
 .plaidImg {
   height: 15vh;
   margin: 40px;
-  -webkit-filter: drop-shadow( 3px 3px 2px rgba(0, 0, 0, .7));
-  filter: drop-shadow( 3px 3px 2px rgba(0, 0, 0, .7));
+  -webkit-filter: drop-shadow( 1.5px 1.5px 1px rgba(0, 0, 0, .7));
+  filter: drop-shadow( 1.5px 1.5px 1px rgba(0, 0, 0, .7));
 }
 
 .plaidH1 {
@@ -1366,8 +1370,9 @@ $speed: 40s;
 }
 
 .plaidP {
-  margin: 10px;
+  margin: 0px 100px;
   font-size: 15px;
+  padding: 0px 40px;
 }
 
 .plaidContainer {
@@ -1378,7 +1383,9 @@ $speed: 40s;
   height: 92vh;
   width: 100vw;
   margin: auto;
-  background: none;
+  background: linear-gradient(45deg, #9fa5eb, #bf9feb, #e59feb, #bf9feb, #9fa5eb);
+  background-size: 600% 600%;
+  animation: AnimationName 20s ease infinite;
 }
 
 .plaidCard {
@@ -1392,7 +1399,7 @@ $speed: 40s;
   text-align: center;
   margin: auto;
   border-radius: 40px;
-  background: #fafafa;
+  background: #fff;
   
 }
 
@@ -1445,13 +1452,7 @@ $speed: 40s;
   width: 100vw;
   height: 10vh;
   text-align: center;
-  hr {
-    border: 1px solid #FFFF00;
-    height: 0px;
-    margin-left: 100px;
-    margin-right: 100px;
-    padding: 100px 0px;
-  }
+
 }
 
 .donationCol {
@@ -1527,13 +1528,13 @@ $speed: 40s;
     // background: #fff;
     &--selectedRadio {
       background-color: #ccc;
-      border-color: #000;
+      
       color: #000;
       font-size: 15px;
       border-left-width: 0;
       display: inline-block;
       padding: .5em 1.25em;
-      border: 2px solid;
+      border: none;
       &:first-child {
         border-left-width: 2px;
         border-radius: 2em 0 0 2em;
@@ -1545,13 +1546,13 @@ $speed: 40s;
     }
     &--noSelectedRadio {
       background-color: #fff;
-      border-color: #000;
+      
       color: #000;
       font-size: 15px;
       border-left-width: 0;
       display: inline-block;
       padding: .5em 1.25em;
-      border: 2px solid;
+      border: none;
       &:first-child {
         border-left-width: 2px;
         border-radius: 2em 0 0 2em;
@@ -1560,12 +1561,264 @@ $speed: 40s;
       &:last-child {
         border-radius: 0 2em 2em 0;
       }
-    }
-
-  
-    
-    
-    
+    } 
   }
+}
 
+
+.rowGradient {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-content: center;
+  justify-content: center;
+  width: 100%;
+  height: 70vh;
+  background: linear-gradient(45deg, #fff, #f9f9f9, #f3f3f3, #f9f9f9, #fff);
+  background-size: 600% 600%;
+  animation: AnimationName 20s ease infinite;
+  
+}
+
+
+/* heart animation two */
+.heart-piece-42 {
+  animation: piece-42 3s infinite;
+  left: 150px;
+  animation-delay: 0.7785s;
+  background-color: #9FA5EB;
+  position: absolute;
+  top: 90px;
+  height: 10px;
+  width: 10px;
+  border-radius: 5px;
+}
+
+.heart-piece-32 {
+  animation: piece-32 3s infinite;
+  left: 134px;
+  animation-delay: 0.583875s;
+  background-color: #B1A4EB;
+  position: absolute;
+  top: 90px;
+  height: 10px;
+  width: 10px;
+  border-radius: 5px;
+}
+.heart-piece-52 {
+  animation: piece-32 3s infinite;
+  left: 166px;
+  animation-delay: 0.583875s;
+  background-color: #B1A4EB;
+  position: absolute;
+  top: 90px;
+  height: 10px;
+  width: 10px;
+  border-radius: 5px;
+}
+
+.heart-piece-22 {
+  animation: piece-22 3s infinite;
+  left: 118px;
+  animation-delay: 0.38925s;
+  background-color: #C2A2EB;
+  position: absolute;
+  top: 90px;
+  height: 10px;
+  width: 10px;
+  border-radius: 5px;
+}
+.heart-piece-62 {
+  animation: piece-22 3s infinite;
+  left: 182px;
+  animation-delay: 0.38925s;
+  background-color: #C2A2EB;
+  position: absolute;
+  top: 90px;
+  height: 10px;
+  width: 10px;
+  border-radius: 5px;
+}
+
+.heart-piece-12 {
+  animation: piece-12 3s infinite;
+  left: 102px;
+  animation-delay: 0.194625s;
+  background-color: #D4A1EB;
+  position: absolute;
+  top: 90px;
+  height: 10px;
+  width: 10px;
+  border-radius: 5px;
+}
+.heart-piece-72 {
+  animation: piece-12 3s infinite;
+  left: 198px;
+  animation-delay: 0.194625s;
+  background-color: #D4A1EB;
+  position: absolute;
+  top: 90px;
+  height: 10px;
+  width: 10px;
+  border-radius: 5px;
+}
+
+.heart-piece-02 {
+  animation: piece-02 3s infinite;
+  left: 86px;
+  animation-delay: 0s;
+  background-color: #E59FEB;
+  position: absolute;
+  top: 90px;
+  height: 10px;
+  width: 10px;
+  border-radius: 5px;
+}
+.heart-piece-82 {
+  animation: piece-02 3s infinite;
+  left: 214px;
+  animation-delay: 0s;
+  background-color: #E59FEB;
+  position: absolute;
+  top: 90px;
+  height: 10px;
+  width: 10px;
+  border-radius: 5px;
+}
+
+
+
+@keyframes piece-42 {
+  0% {
+  height: 10px;
+  top: 90px;
+ }
+ 10% {
+  height: 10px;
+  top: 90px;
+ }
+ 45% {
+  height: 94px;
+  top: 72px;
+ }
+ 55% {
+  height: 94px;
+  top: 72px;
+ }
+ 90% {
+  height: 10px;
+  top: 90px;
+ }
+ 100% {
+  height: 10px;
+  top: 90px;
+ }
+}
+
+@keyframes piece-32 {
+ 0% {
+  height: 10px;
+  top: 90px;
+ }
+ 10% {
+  height: 10px;
+  top: 90px;
+ }
+ 45% {
+  height: 90px;
+  top: 64px;
+ }
+ 55% {
+  height: 90px;
+  top: 64px;
+ }
+ 90% {
+  height: 10px;
+  top: 90px;
+ }
+ 100% {
+  height: 10px;
+  top: 90px;
+ }
+}
+
+@keyframes piece-22 {
+ 0% {
+  height: 10px;
+  top: 90px;
+ }
+ 10% {
+  height: 10px;
+  top: 90px;
+ }
+ 45% {
+  height: 80px;
+  top: 58px;
+ }
+ 55% {
+  height: 80px;
+  top: 58px;
+ }
+ 90% {
+  height: 10px;
+  top: 90px;
+ }
+ 100% {
+  height: 10px;
+  top: 90px;
+ }
+}
+
+@keyframes piece-12 {
+ 0% {
+  height: 10px;
+  top: 90px;
+ }
+ 10% {
+  height: 10px;
+  top: 90px;
+ }
+ 45% {
+  height: 60px;
+  top: 64px;
+ }
+ 55% {
+  height: 60px;
+  top: 64px;
+ }
+ 90% {
+  height: 10px;
+  top: 90px;
+ }
+ 100% {
+  height: 10px;
+  top: 90px;
+ }
+}
+
+@keyframes piece-02 {
+ 0% {
+  height: 10px;
+  top: 90px;
+ }
+ 10% {
+  height: 10px;
+  top: 90px;
+ }
+ 45% {
+  height: 30px;
+  top: 80px;
+ }
+ 55% {
+  height: 30px;
+  top: 80px;
+ }
+ 90% {
+  height: 10px;
+  top: 90px;
+ }
+ 100% {
+  height: 10px;
+  top: 90px;
+ }
 }
