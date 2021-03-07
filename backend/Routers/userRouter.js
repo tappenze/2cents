@@ -42,8 +42,12 @@ userRouter.get('/users', auth.authenticateJWT, async function (req, res) {
  * endpoint for getting a user by their id
  */
 userRouter.get('/users/id/:id', auth.authenticateJWT, async function (req, res) {
+  console.log("in user router for getting with id, the req is");
+  // console.log(req);
   let id = req.params.id;
   let result = await userService.getUserById(id);
+  console.log("reuslt in userRouter is");
+  console.log(result);
   if (result instanceof Error) {
     res.status(400).send(result.message);
   } else {

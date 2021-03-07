@@ -16,28 +16,30 @@ console.log("\x1b[36m%s\x1b[0m", "Starting BACKEND...");
  * You do not need to import all libraries for the whole project here.
  * If a separate file requires different imports, you can do it just in that specific file
  */
-const util = require('util');
+const util = require("util");
 const express = require("express");
 const path = require("path");
 require("dotenv").config();
 var cors = require("cors");
-const plaid = require('plaid');
+const plaid = require("plaid");
+
+const moment = require("moment");
 
 const mongoose = require("mongoose");
 
-const PLAID_PRODUCTS = (process.env.PLAID_PRODUCTS || 'transactions').split(
-  ',',
+const PLAID_PRODUCTS = (process.env.PLAID_PRODUCTS || "transactions").split(
+  ","
 );
 
-const PLAID_COUNTRY_CODES = (process.env.PLAID_COUNTRY_CODES || 'US').split(
-  ',',
+const PLAID_COUNTRY_CODES = (process.env.PLAID_COUNTRY_CODES || "US").split(
+  ","
 );
 
-const PLAID_REDIRECT_URI = process.env.PLAID_REDIRECT_URI || '';
+const PLAID_REDIRECT_URI = process.env.PLAID_REDIRECT_URI || "";
 
 // Parameter used for OAuth in Android. This should be the package name of your app,
 // e.g. com.plaid.linksample
-const PLAID_ANDROID_PACKAGE_NAME = process.env.PLAID_ANDROID_PACKAGE_NAME || '';
+const PLAID_ANDROID_PACKAGE_NAME = process.env.PLAID_ANDROID_PACKAGE_NAME || "";
 
 // We store the access_token in memory - in production, store it in a secure
 // persistent data store
@@ -46,11 +48,11 @@ let PUBLIC_TOKEN = null;
 let ITEM_ID = null;
 
 const client = new plaid.Client({
-  clientID: '6042cfb7d34cf5000f804f33',
-  secret: '889ae08aa112ff6bef2cdc72b31252',
-  env: plaid.environments['sandbox'],
+  clientID: "6042cfb7d34cf5000f804f33",
+  secret: "889ae08aa112ff6bef2cdc72b31252",
+  env: plaid.environments["sandbox"],
   options: {
-    version: '2019-05-29',
+    version: "2019-05-29",
   },
 });
 console.log(client);
@@ -59,8 +61,7 @@ console.log(client);
  * connection to MongoDB Atlas Users database
  * the connection to the specific database is handled in other files
  */
-const defaultURI =
-  process.env.ATLAS_URI;
+const defaultURI = process.env.ATLAS_URI;
 
 mongoose.connect(defaultURI, {
   useNewUrlParser: true,
@@ -151,24 +152,24 @@ app.listen(PORT, () => {
 
 // Create a link token with configs which we can then use to initialize Plaid Link client-side.
 // See https://plaid.com/docs/#create-link-token
-app.post('/api/create_link_token', function (request, response, next) {
-  console.log("creating link token")
+app.post("/api/create_link_token", function (request, response, next) {
+  console.log("creating link token");
   const configs = {
     user: {
       // This should correspond to a unique id for the current user.
-      client_user_id: 'user-id',
+      client_user_id: "user-id",
     },
-    client_name: '2cents',
+    client_name: "2cents",
     products: PLAID_PRODUCTS,
     country_codes: PLAID_COUNTRY_CODES,
-    language: 'en',
+    language: "en",
   };
 
-  if (PLAID_REDIRECT_URI !== '') {
+  if (PLAID_REDIRECT_URI !== "") {
     configs.redirect_uri = PLAID_REDIRECT_URI;
   }
 
-  if (PLAID_ANDROID_PACKAGE_NAME !== '') {
+  if (PLAID_ANDROID_PACKAGE_NAME !== "") {
     configs.android_package_name = PLAID_ANDROID_PACKAGE_NAME;
   }
 
@@ -183,37 +184,37 @@ app.post('/api/create_link_token', function (request, response, next) {
   });
 });
 
-app.post('/get_link_token', async(req, res) => {
+app.post("/get_link_token", async (req, res) => {
   const response = await client.getLinkToken(linkToken).catch((err) => {
-    if(!linkToken){
-        return "no link token"
+    if (!linkToken) {
+      return "no link token";
     }
   });
-})
+});
 
 // Create a link token with configs which we can then use to initialize Plaid Link client-side.
 // See https://plaid.com/docs/#payment-initiation-create-link-token-request
 app.post(
-  '/api/create_link_token_for_payment',
+  "/api/create_link_token_for_payment",
   function (request, response, next) {
     client.createPaymentRecipient(
-      'Harry Potter',
-      'GB33BUKB20201555555555',
+      "Harry Potter",
+      "GB33BUKB20201555555555",
       {
-        street: ['4 Privet Drive'],
-        city: 'Little Whinging',
-        postal_code: '11111',
-        country: 'GB',
+        street: ["4 Privet Drive"],
+        city: "Little Whinging",
+        postal_code: "11111",
+        country: "GB",
       },
       function (error, createRecipientResponse) {
         const recipientId = createRecipientResponse.recipient_id;
 
         client.createPayment(
           recipientId,
-          'paymentRef',
+          "paymentRef",
           {
             value: 12.34,
-            currency: 'GBP',
+            currency: "GBP",
           },
           function (error, createPaymentResponse) {
             if (error != null) {
@@ -228,29 +229,29 @@ app.post(
             const configs = {
               user: {
                 // This should correspond to a unique id for the current user.
-                client_user_id: 'user-id',
+                client_user_id: "user-id",
               },
-              client_name: 'Plaid Quickstart',
+              client_name: "Plaid Quickstart",
               products: PLAID_PRODUCTS,
               country_codes: PLAID_COUNTRY_CODES,
-              language: 'en',
+              language: "en",
               payment_initiation: {
                 payment_id: paymentId,
               },
             };
-            if (PLAID_REDIRECT_URI !== '') {
+            if (PLAID_REDIRECT_URI !== "") {
               configs.redirect_uri = PLAID_REDIRECT_URI;
             }
             client.createLinkToken(
               {
                 user: {
                   // This should correspond to a unique id for the current user.
-                  client_user_id: 'user-id',
+                  client_user_id: "user-id",
                 },
-                client_name: 'Plaid Quickstart',
+                client_name: "Plaid Quickstart",
                 products: PLAID_PRODUCTS,
                 country_codes: PLAID_COUNTRY_CODES,
-                language: 'en',
+                language: "en",
                 redirect_uri: PLAID_REDIRECT_URI,
                 payment_initiation: {
                   payment_id: paymentId,
@@ -264,20 +265,20 @@ app.post(
                   });
                 }
                 response.json(createTokenResponse);
-              },
+              }
             );
-          },
+          }
         );
-      },
+      }
     );
-  },
+  }
 );
 
 // Exchange token flow - exchange a Link public_token for
 // an API access_token
 // https://plaid.com/docs/#exchange-token-flow
-app.post('/api/get_access_token', function (request, response, next) {
-  console.log('getting access token from link token');
+app.post("/api/get_access_token", function (request, response, next) {
+  console.log("getting access token from link token");
   console.log(request.body);
   console.log(request.body.publicToken);
   PUBLIC_TOKEN = request.body.publicToken;
@@ -303,7 +304,7 @@ app.post('/api/get_access_token', function (request, response, next) {
 
 // Retrieve an Item's accounts
 // https://plaid.com/docs/#accounts
-app.get('/api/accounts', function (request, response, next) {
+app.get("/api/accounts", function (request, response, next) {
   client.getAccounts(ACCESS_TOKEN, function (error, accountsResponse) {
     if (error != null) {
       prettyPrintResponse(error);
@@ -318,7 +319,7 @@ app.get('/api/accounts', function (request, response, next) {
 
 // Retrieve ACH or ETF Auth data for an Item's accounts
 // https://plaid.com/docs/#auth
-app.get('/api/auth', function (request, response, next) {
+app.get("/api/auth", function (request, response, next) {
   client.getAuth(ACCESS_TOKEN, function (error, authResponse) {
     if (error != null) {
       prettyPrintResponse(error);
@@ -333,10 +334,13 @@ app.get('/api/auth', function (request, response, next) {
 
 // Retrieve Transactions for an Item
 // https://plaid.com/docs/#transactions
-app.get('/api/transactions', function (request, response, next) {
+app.get("/api/transactions/:accessToken", function (request, response, next) {
   // Pull transactions for the Item for the last 30 days
-  const startDate = moment().subtract(30, 'days').format('YYYY-MM-DD');
-  const endDate = moment().format('YYYY-MM-DD');
+  console.log("In the get transactions part of the backend");
+  // console.log(request.params);
+  const startDate = moment().subtract(30, "days").format("YYYY-MM-DD");
+  const endDate = moment().format("YYYY-MM-DD");
+  const ACCESS_TOKEN = request.params.accessToken;
   client.getTransactions(
     ACCESS_TOKEN,
     startDate,
@@ -347,15 +351,15 @@ app.get('/api/transactions', function (request, response, next) {
     },
     function (error, transactionsResponse) {
       if (error != null) {
-        prettyPrintResponse(error);
+        // prettyPrintResponse(error);
         return response.json({
           error,
         });
       } else {
-        console.log(transactionsResponse);
-        prettyPrintResponse(transactionsResponse);
+        // console.log(transactionsResponse);
+        // prettyPrintResponse(transactionsResponse);
         response.json(transactionsResponse);
       }
-    },
+    }
   );
 });
