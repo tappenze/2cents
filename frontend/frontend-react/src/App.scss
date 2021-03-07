@@ -1,11 +1,15 @@
 /* general css */
 @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@800&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@500&display=swap');
 body,
 input,
 form,
 logo {
   font-family: "Raleway", sans-serif;
+}
+
+h1 {
+  font-fammily: "Raleway", sans-serif;
 }
 
 button {
@@ -20,11 +24,17 @@ button {
   justify-content: center;
   postition: sticky;
   box-shadow: 0 2px 4px 0 rgba(0,0,0,.2);
-  z-index: 2;
+  z-index: 10;
 }
 
 .left, .right {
   flex: 1;
+}
+
+.middle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .left {
@@ -1327,4 +1337,72 @@ $speed: 40s;
   to {
     transform: rotate(1turn);
   }
+}
+
+/* bank page */
+.btnTop {
+  z-index: 5;
+}
+
+.plaidImg {
+  height: 15vh;
+  margin: 40px;
+  -webkit-filter: drop-shadow( 3px 3px 2px rgba(0, 0, 0, .7));
+  filter: drop-shadow( 3px 3px 2px rgba(0, 0, 0, .7));
+}
+
+.plaidH1 {
+  font-size: 30px;
+}
+
+.plaidP {
+  margin: 10px;
+  font-size: 15px;
+}
+
+.plaidContainer {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  height: 92vh;
+  width: 100vw;
+  margin: auto;
+  background: none;
+}
+
+.plaidCard {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 80%;
+  width: 65%;
+  justify-content: center;
+  align-content: center;
+  text-align: center;
+  margin: auto;
+  border-radius: 40px;
+  background: #fafafa;
+  
+}
+
+.plaidRow {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-content: center;
+  justify-content: center;
+  width: 100%;
+  height: 20vh;
+}
+
+.plaidLink {
+  padding: 20px;
+  font-size: 16px;
+  cursor: "pointer";
+  color: #000;
+  text-align: center;
+  width: 15vw;
+  height: 35%;
+  border-radius: 20px;
 }
