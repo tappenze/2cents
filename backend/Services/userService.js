@@ -3,20 +3,20 @@
  * @author Chris Koehne <cdkoehne@gmail.com>
  */
 
-const mongoose = require('mongoose');
-mongoose.set('useFindAndModify', false);
-const User = require('../Models/User');
-const constants = require('../constants');
+const mongoose = require("mongoose");
+mongoose.set("useFindAndModify", false);
+const User = require("../Models/User");
+const constants = require("../constants");
 
 /**
  * require bcrypt for hashing
  */
-const bcrypt = require('bcrypt');
+const bcrypt = require("bcrypt");
 
 /**
  * require jsonwebtoken for authentication
  */
-const jwt = require('jsonwebtoken');
+const jwt = require("jsonwebtoken");
 
 /**
  * This function takes in an email and password and attempts to create a user
@@ -40,15 +40,15 @@ exports.addUser = async function (addMe) {
     let result = await User.create(addMe);
 
     if (result instanceof User) {
-      console.log('User Created!');
+      console.log("User Created!");
       const token = jwt.sign({ id: result._id }, process.env.JWT_SECRET, {
-        expiresIn: '6h',
+        expiresIn: "6h",
       });
       return token;
     }
     return constants.U_CREATION_FAILURE;
   } catch (err) {
-    console.log("there was an error")
+    console.log("there was an error");
     return err;
   }
 };
@@ -96,7 +96,7 @@ exports.login = async function (user) {
     }
     if (await bcrypt.compare(user.password, match.password)) {
       const token = jwt.sign({ id: match._id }, process.env.JWT_SECRET, {
-        expiresIn: '6h',
+        expiresIn: "6h",
       });
       return token;
     } else {
@@ -120,16 +120,17 @@ exports.charitySelect = async function (user) {
     let filter = { _id: user.id };
     let update = { charity: user.charity, active: true };
     const opts = { runValidators: true };
-    let match = await User.findOne(filter).select('-_password');
+    let match = await User.findOne(filter).select("-_password");
     if (match === null) {
       return constants.U_DOES_NOT_EXIST;
     }
-    let result = await User.findOneAndUpdate(filter, update, opts).select('-_password');
+    let result = await User.findOneAndUpdate(filter, update, opts).select(
+      "-_password"
+    );
     if (result instanceof User) {
       return "Charity switched to " + user.charity;
     }
     return "Could not update charity to " + user.active;
-    
   } catch (err) {
     console.log(err);
     return err;
@@ -144,7 +145,7 @@ exports.charitySelect = async function (user) {
  */
 exports.charityStatus = async function (id) {
   try {
-    let match = await User.findOne({ _id: id }).select('charity active -_id');
+    let match = await User.findOne({ _id: id }).select("charity active -_id");
     if (match === null) {
       return constants.U_DOES_NOT_EXIST;
     }
@@ -164,11 +165,16 @@ exports.charityStatus = async function (id) {
  */
 exports.updateActivity = async function (user) {
   try {
-    let match = await User.findOne({ _id: user.id }).select('charity active -_id');
+    let match = await User.findOne({ _id: user.id }).select(
+      "charity active -_id"
+    );
     if (match === null) {
       return constants.U_DOES_NOT_EXIST;
     }
-    let result = await User.findOneAndUpdate({ _id: user.id }, {active: user.active});
+    let result = await User.findOneAndUpdate(
+      { _id: user.id },
+      { active: user.active }
+    );
     if (result instanceof User) {
       return "Updated to " + user.active;
     }
@@ -187,21 +193,32 @@ exports.updateActivity = async function (user) {
  * @returns {String} the string response
  */
 exports.bankchoice = async function (user) {
-  console.log("in bank choice")
+  console.log("in bank choice");
+  console.log(user);
   try {
     let filter = { _id: user.id };
-    let update = { accesstoken: user.accesstoken, itemid: user.itemid, active: true };
+    let update = {
+      accessToken: user.accessToken,
+      itemId: user.itemID,
+      active: true,
+    };
     const opts = { runValidators: true };
-    let match = await User.findOne(filter).select('-_password');
+    let match = await User.findOne(filter).select("-_password");
     if (match === null) {
       return constants.U_DOES_NOT_EXIST;
     }
-    let result = await User.findOneAndUpdate(filter, update, opts).select('-_password');
+    let result = await User.findOneAndUpdate(filter, update, opts).select(
+      "-_password"
+    );
     if (result instanceof User) {
-      return "access token set to " + user.accesstoken + "and item id set to " + user.itemid;
+      return (
+        "access token set to " +
+        user.accessToken +
+        " and item id set to " +
+        user.itemID
+      );
     }
-    return "Could not update accesstoken and userid to " + user.active;
-    
+    return "Could not update accesstoken and userid to";
   } catch (err) {
     console.log(err);
     return err;

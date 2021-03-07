@@ -16,8 +16,8 @@ const userSchema = new mongoose.Schema(
     password: { type: String, required: true },
     charity: { type: String, required: true, default: "none" },
     active: { type: Boolean, required: true, default: false },
-    accesstoken: { type: String, required: false },
-    itemid: { type: String, required: false },
+    accessToken: { type: String, required: false },
+    itemId: { type: String, required: false },
   },
   { timestamps: true }
 );

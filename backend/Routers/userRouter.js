@@ -124,8 +124,11 @@ userRouter.put('/users/update-activity', auth.authenticateJWT, async function (r
   }
 });
 
-userRouter.put('/users/bank-choice', async function (req, res) {
+userRouter.put('/users/bank-choice', auth.authenticateJWT, async function (req, res) {
+  console.log("in the router");
   let result = await userService.bankchoice(req.body);
+  console.log("result in the user router is")
+  console.log(result)
   if (result === constants.U_DOES_NOT_EXIST) {
     res.status(404).send(result);
   } else if (result instanceof Error) {
