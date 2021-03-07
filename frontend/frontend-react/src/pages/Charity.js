@@ -57,7 +57,7 @@ class Charity extends React.Component {
 
 
   render() {
-    console.log(this.state);
+    // console.log(this.state);
     let bagClass =
 
       this.state.charity === "Boys and Girls Club" ? "selected" : "";

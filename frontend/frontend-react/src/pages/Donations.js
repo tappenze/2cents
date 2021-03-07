@@ -106,12 +106,10 @@ class Donations extends React.Component {
   render() {
     let mainContent;
     if (this.state.loaded) {
-
       let donations = this.state.donations;
 
       let donationContent = donations.map((donation) => {
-				// console.log("amount is " + donation.amount)
-        let iconSrc = donation.charity;
+        // console.log("amount is " + donation.amount)
         let donationDate = this.parseDate(donation.timeDonated);
         let diff = this.datediff(donationDate, new Date());
         if (diff < 21) {
@@ -145,12 +143,19 @@ class Donations extends React.Component {
           }
         }
 
+        let src = unitedWay;
+        if (donation.charity === 'Boys and Girls Club') src = bagClub;
+        else if (donation.charity === 'Bail Project') src = bailProject;
+        else if (donation.charity === 'Feeding America') src = feedingAmerica;
+        else if (donation.charity === 'Room to Read') src = roomToRead;
+        else if (donation.charity === 'Water.org') src = waterOrg;
+
         return (
           <div>
             <hr />
             <div class='donationRow'>
               <div class='donationLeft'>
-                <img src={unitedWay} class='charityIcon' />
+                <img src={src} class='charityIcon' />
                 <p>
                   <strong>Donated</strong> to{' '}
                   <strong>{donation.charity}</strong>
@@ -172,31 +177,22 @@ class Donations extends React.Component {
       );
     } else {
       mainContent = (
-        <div class="donationRowHeader">
-          <div class="flex-container">
-					<div class="unit">
-						<div class="heart">
-							<div class="heart-piece-0">
-							</div>
-							<div class="heart-piece-1">
-							</div>
-							<div class="heart-piece-2">
-							</div>
-							<div class="heart-piece-3">
-							</div>
-							<div class="heart-piece-4">
-							</div>
-							<div class="heart-piece-5">
-							</div>
-							<div class="heart-piece-6">
-							</div>
-							<div class="heart-piece-7">
-							</div>
-							<div class="heart-piece-8">
-							</div>
-						</div>
-					</div>
-				</div>
+        <div class='donationRowHeader'>
+          <div class='flex-container'>
+            <div class='unit'>
+              <div class='heart'>
+                <div class='heart-piece-0'></div>
+                <div class='heart-piece-1'></div>
+                <div class='heart-piece-2'></div>
+                <div class='heart-piece-3'></div>
+                <div class='heart-piece-4'></div>
+                <div class='heart-piece-5'></div>
+                <div class='heart-piece-6'></div>
+                <div class='heart-piece-7'></div>
+                <div class='heart-piece-8'></div>
+              </div>
+            </div>
+          </div>
         </div>
       );
     }

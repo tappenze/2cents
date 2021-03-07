@@ -22,7 +22,7 @@ class Social extends React.Component {
 		super(props);
 		this.state = {
 			loaded: false,
-			allTransactions: [],
+			allDonations: [],
 			users: []
 		};
 	}
@@ -38,21 +38,20 @@ class Social extends React.Component {
 		}
 		// get all users first
 		let res = await getAllUsers(jwt);
-		console.log("in social");
-		console.log(res.message);
+		// console.log("in social");
+		// console.log(res.message);
 		let users = res.message;
 		// for each of these people, get their donations (email is in there)
 		await users.forEach(user => this.setState({
-			allTransactions: this.state.allTransactions.concat(user.donationsHistory),
+			allDonations: this.state.allDonations.concat(user.donationsHistory),
 			loaded: true
 		}));
-		console.log("after");
-		console.log(this.state.allTransactions);
-		// i have all transactions now with their emails in them
+		// console.log("after");
+		// console.log(this.state.allDonations);
 	}
 
 	parseDate = (str) => {
-		console.log(str)
+		// console.log(str)
 		var mdy = str.split("-");
 		return new Date(mdy[0], mdy[1] - 1, parseInt(mdy[2].substring(1,3)));
 	  };
@@ -66,27 +65,7 @@ class Social extends React.Component {
 	render() {
 		let mainContent;
 		if (this.state.loaded) {
-		let unfiltered = this.state.allTransactions.map((transaction) => {
-			if (
-			transaction.amount > 0 &&
-			Math.ceil(transaction.amount) !== transaction.amount
-			) {
-			let temp = transaction;
-			temp.amount = (
-				Math.round(
-				(Math.ceil(transaction.amount) - transaction.amount) * 100
-				) / 100
-			).toString();
-			if (temp.amount.length < 4) {
-				temp.amount += "0";
-			}
-			// change charity here!!!
-			temp.charity = "unitedWay";
-			return temp;
-			}
-		});
-		console.log(unfiltered);
-		let donations = unfiltered.filter((data) => data !== undefined);
+		let donations = this.state.allDonations
 		// console.log("donations", donations);
 
 		let donationContent = donations.map((donation) => {
@@ -126,17 +105,24 @@ class Social extends React.Component {
 			}
 			}
 
+			let src = unitedWay
+			if (donation.charity === 'Boys and Girls Club') src = bagClub;
+			else if (donation.charity === 'Bail Project') src = bailProject;
+			else if (donation.charity === 'Feeding America') src = feedingAmerica;
+			else if (donation.charity === 'Room to Read') src = roomToRead;
+			else if (donation.charity === 'Water.org') src = waterOrg;
+
 			return (
 			<div>
 				<hr />
 				<div class="donationRow">
 				<div class="donationLeft">
-					<img src={unitedWay} class="charityIcon" />
+					<img src={src} class="charityIcon" />
 					<p>
 					<strong>{donation.email}</strong>
 					<br/>
 					<strong>Donated</strong> to{" "}
-					<strong>*insert charity here*</strong>
+					<strong>{donation.charity}</strong>
 					<br />
 					{diff}
 					</p>
