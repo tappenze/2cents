@@ -52,6 +52,7 @@ export const getDonationsFromTransactions = async(user, transactions, activityHi
   // console.log(activityHistory);
   let donations = transactions.map((transaction) => {
     // take the transaction and process it into an object which is {timeDonated, charity, amount}
+
     let amount = Math.round((1 - transaction.amount) * 100) / 100;
     let charity = findCharity(transaction, activityHistory);
     let timeDonated = transaction.date;
@@ -59,7 +60,12 @@ export const getDonationsFromTransactions = async(user, transactions, activityHi
     let temp = {timeDonated: timeDonated, charity: charity, amount: amount, email: email};
     return temp;
   });
-  return donations;
+  console.log("donations are")
+  console.log(donations)
+
+  return donations.filter(donation => {
+    return donation.charity !== undefined;
+  });
 };
 
 /**
@@ -78,10 +84,13 @@ const findCharity = (transaction, activityHistory) => {
     let time = Date.parse(
       new Date(activity.timeStarted).toISOString().slice(0, 10)
     );
-    return activity.active === true && time >= mostRecent;
+    return activity.active === true &&  transactionDate>= time;
   });
   // console.log("charity is")
   // console.log(matchingActivity.charity);
+  if (matchingActivity === undefined) {
+    return undefined
+  }
   return matchingActivity.charity;
 };
 
