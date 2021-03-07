@@ -110,16 +110,18 @@ class BankChoice extends React.Component {
 
     return (
       <div>
-        <PlaidLink
-          className="CustomButton"
-          style={{ padding: "20px", fontSize: "16px", cursor: "pointer" }}
-          token={this.getLinkToken() ? this.getLinkToken() : ""}
-          onExit={onExit}
-          onSuccess={onSuccess}
-          onEvent={onEvent}
-        >
-          Open Link and connect your bank!
-        </PlaidLink>
+        <a class="btnGradient">
+          <PlaidLink
+            className="btnGradient"
+            token={this.getLinkToken() ? this.getLinkToken() : ""}
+            onExit={onExit}
+            onSuccess={onSuccess}
+            onEvent={onEvent}
+          >
+            Connect
+          </PlaidLink>
+        </a>
+        
       </div>
     );
   }
