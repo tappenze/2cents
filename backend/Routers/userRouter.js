@@ -143,6 +143,18 @@ userRouter.put('/users/bank-choice', auth.authenticateJWT, async function (req, 
   }
 });
 
+userRouter.put('/users/update-donations', auth.authenticateJWT, async function (req, res) {
+  let result = await userService.updateDonations(req.body);
+  if (result === constants.U_DOES_NOT_EXIST) {
+    res.status(404).send(result);
+  } else if (result instanceof Error) {
+    console.log(result);
+    res.status(400).send(result.message);
+  } else {
+    res.status(200).send(result);
+  }
+});
+
 
 /**
  * allows index.js to access this file
