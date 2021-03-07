@@ -10,6 +10,7 @@ import Social from './pages/Social'
 import SignIn from './pages/SignIn'
 import Home from './pages/Home'
 import Banks from './pages/BankChoice'
+import SignedUp from './pages/SignedUp'
 
 
 class App extends React.Component {
@@ -26,6 +27,7 @@ class App extends React.Component {
               <Route path='/charity' component={Charity} />
               <Route path='/donations' component={Donations} />
               <Route path='/signin' component={SignIn} />
+              <Route path='/signedup' component={SignedUp} />
               <Route component={NoMatch} />
             </Switch>
           </Router>

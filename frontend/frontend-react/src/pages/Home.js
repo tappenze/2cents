@@ -73,11 +73,11 @@ class Home extends React.Component {
   isActiveText = () => {
 		console.log("here")
     if (this.state.active) {
-      return <p class='landingP'>You currently have rounding-up donations on.</p>;
+      return <p class='landingP'>You currently have automatic donations on.</p>;
     } else {
       return (
         <p class='landingP'>
-          You currently have rounding-up donations off.
+          You currently have automatic donations off.
         </p>
       );
     }
@@ -88,7 +88,7 @@ class Home extends React.Component {
     let mainContent;
     if (this.state.loaded) {
       mainContent = (
-        <div class='row'>
+        <div class='rowGradient'>
           <div class='col'>
             <h1 class='landingH1'>Building Karma on autopilot.</h1>
 
@@ -162,7 +162,7 @@ class Home extends React.Component {
           <div class='row'>
             <div class='col'>
               <div class='slider'>
-                <h1 class='landingH1'>Most major banks accepted</h1>
+                <h1 class='landingH1'>All major banks accepted</h1>
                 <div class='slider-row'></div>
               </div>
             </div>

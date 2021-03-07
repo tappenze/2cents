@@ -95,7 +95,10 @@ class Donations extends React.Component {
 			let iconSrc = donation.charity
 			let donationDate = this.parseDate(donation.date)
 			let diff = this.datediff(donationDate, new Date())
-			if (diff < 21) {
+			if (diff === 0) {
+				diff = "today"
+			}
+			else if (diff < 21) {
 				diff += "d"
 			}
 			else {
@@ -177,7 +180,30 @@ class Donations extends React.Component {
 	else {
 		mainContent = (
 			<div class="donationRowHeader">
-				<h1>loaded</h1>
+				<div class="flex-container">
+					<div class="unit">
+						<div class="heart">
+							<div class="heart-piece-0">
+							</div>
+							<div class="heart-piece-1">
+							</div>
+							<div class="heart-piece-2">
+							</div>
+							<div class="heart-piece-3">
+							</div>
+							<div class="heart-piece-4">
+							</div>
+							<div class="heart-piece-5">
+							</div>
+							<div class="heart-piece-6">
+							</div>
+							<div class="heart-piece-7">
+							</div>
+							<div class="heart-piece-8">
+							</div>
+						</div>
+					</div>
+				</div>
 			</div>
 		)
 	}
