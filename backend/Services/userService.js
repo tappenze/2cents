@@ -3,20 +3,20 @@
  * @author Chris Koehne <cdkoehne@gmail.com>
  */
 
-const mongoose = require("mongoose");
-mongoose.set("useFindAndModify", false);
-const User = require("../Models/User");
-const constants = require("../constants");
+const mongoose = require('mongoose');
+mongoose.set('useFindAndModify', false);
+const User = require('../Models/User');
+const constants = require('../constants');
 
 /**
  * require bcrypt for hashing
  */
-const bcrypt = require("bcrypt");
+const bcrypt = require('bcrypt');
 
 /**
  * require jsonwebtoken for authentication
  */
-const jwt = require("jsonwebtoken");
+const jwt = require('jsonwebtoken');
 
 /**
  * This function takes in an email and password and attempts to create a user
@@ -27,7 +27,7 @@ const jwt = require("jsonwebtoken");
  * @returns {String} the string response (Success or Failure)
  */
 exports.addUser = async function (addMe) {
-  console.log("in add user with new models");
+  console.log('in add user with new models');
   try {
     addMe.email = addMe.email.toLowerCase();
     let exists = await User.find({ email: addMe.email });
@@ -40,15 +40,15 @@ exports.addUser = async function (addMe) {
     let result = await User.create(addMe);
 
     if (result instanceof User) {
-      console.log("User Created!");
+      console.log('User Created!');
       const token = jwt.sign({ id: result._id }, process.env.JWT_SECRET, {
-        expiresIn: "6h",
+        expiresIn: '6h',
       });
       return token;
     }
     return constants.U_CREATION_FAILURE;
   } catch (err) {
-    console.log("there was an error");
+    console.log('there was an error');
     return err;
   }
 };
@@ -96,7 +96,7 @@ exports.login = async function (user) {
     }
     if (await bcrypt.compare(user.password, match.password)) {
       const token = jwt.sign({ id: match._id }, process.env.JWT_SECRET, {
-        expiresIn: "6h",
+        expiresIn: '6h',
       });
       return token;
     } else {
@@ -118,19 +118,36 @@ exports.login = async function (user) {
 exports.charitySelect = async function (user) {
   try {
     let filter = { _id: user.id };
-    let update = { charity: user.charity, active: true };
     const opts = { runValidators: true };
-    let match = await User.findOne(filter).select("-_password");
+    let match = await User.findOne(filter).select('-_password');
     if (match === null) {
       return constants.U_DOES_NOT_EXIST;
     }
+    let update;
+    if (match.charity !== user.charity) {
+      update = {
+        charity: user.charity,
+        active: true,
+        $push: {
+          activityHistory: {
+            active: true,
+            charity: user.charity,
+          },
+        },
+      };
+    } else {
+      update = {
+        charity: user.charity,
+        active: true,
+      };
+    }
     let result = await User.findOneAndUpdate(filter, update, opts).select(
-      "-_password"
+      '-_password'
     );
     if (result instanceof User) {
-      return "Charity switched to " + user.charity;
+      return 'Charity switched to ' + user.charity;
     }
-    return "Could not update charity to " + user.active;
+    return 'Could not update charity to ' + user.active;
   } catch (err) {
     console.log(err);
     return err;
@@ -145,7 +162,7 @@ exports.charitySelect = async function (user) {
  */
 exports.charityStatus = async function (id) {
   try {
-    let match = await User.findOne({ _id: id }).select("charity active -_id");
+    let match = await User.findOne({ _id: id }).select('charity active -_id');
     if (match === null) {
       return constants.U_DOES_NOT_EXIST;
     }
@@ -165,20 +182,31 @@ exports.charityStatus = async function (id) {
  */
 exports.updateActivity = async function (user) {
   try {
+    let filter = { _id: user.id };
+    const opts = { runValidators: true };
     let match = await User.findOne({ _id: user.id }).select(
-      "charity active -_id"
+      'charity active -_id'
     );
     if (match === null) {
       return constants.U_DOES_NOT_EXIST;
     }
-    let result = await User.findOneAndUpdate(
-      { _id: user.id },
-      { active: user.active }
+    let update = {
+      active: user.active,
+      $push: {
+        activityHistory: {
+          active: user.active,
+          charity: match.charity,
+        },
+      },
+    };
+
+    let result = await User.findOneAndUpdate(filter, update, opts).select(
+      '-_password'
     );
     if (result instanceof User) {
-      return "Updated to " + user.active;
+      return 'Updated to ' + user.active;
     }
-    return "Could not update to " + user.active;
+    return 'Could not update to ' + user.active;
   } catch (err) {
     console.log(err);
     return err;
@@ -193,7 +221,7 @@ exports.updateActivity = async function (user) {
  * @returns {String} the string response
  */
 exports.bankchoice = async function (user) {
-  console.log("in bank choice");
+  console.log('in bank choice');
   console.log(user);
   try {
     let filter = { _id: user.id };
@@ -203,22 +231,22 @@ exports.bankchoice = async function (user) {
       active: true,
     };
     const opts = { runValidators: true };
-    let match = await User.findOne(filter).select("-_password");
+    let match = await User.findOne(filter).select('-_password');
     if (match === null) {
       return constants.U_DOES_NOT_EXIST;
     }
     let result = await User.findOneAndUpdate(filter, update, opts).select(
-      "-_password"
+      '-_password'
     );
     if (result instanceof User) {
       return (
-        "access token set to " +
+        'access token set to ' +
         user.accessToken +
-        " and item id set to " +
+        ' and item id set to ' +
         user.itemID
       );
     }
-    return "Could not update accesstoken and userid to";
+    return 'Could not update accesstoken and userid to';
   } catch (err) {
     console.log(err);
     return err;
