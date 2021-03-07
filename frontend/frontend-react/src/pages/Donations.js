@@ -181,7 +181,7 @@ class Donations extends React.Component {
                 </p>
               </div>
               <div class='donationRight'>
-                <p>+ {donation.amount} $</p>
+                <p>+ {Math.floor(donation.amount * 100)} &#162;</p>
               </div>
             </div>
           </div>

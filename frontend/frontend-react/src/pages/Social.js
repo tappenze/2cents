@@ -72,25 +72,7 @@ class Social extends React.Component {
 		let donationContent = donations.map((donation) => {
 			// console.log(donation)
 			// console.log(donation.timeDonated)
-			let src
-			if (donation.charity === "Boys and Girls Club") {
-				src = bagClub
-			}
-			else if (donation.charity === "Bail Project") {
-				src = bailProject
-			}
-			else if (donation.charity === "Feeding America") {
-				src = feedingAmerica
-			}
-			else if (donation.charity === "Room to Read") {
-				src = roomToRead
-			}
-			else if (donation.charity === "United Way") {
-				src = unitedWay
-			}
-			else if (donation.charity === "Water.org") {
-				src = waterOrg
-			}
+			
 			let donationDate = this.parseDate(donation.timeDonated);
 			let diff = this.datediff(donationDate, new Date());
 			if (diff < 21) {
@@ -147,7 +129,7 @@ class Social extends React.Component {
 					</p>
 				</div>
 				<div class="donationRight">
-					<p>+ {donation.amount} $</p>
+					<p>+ {Math.floor(donation.amount * 100)} &#162;</p>
 				</div>
 				</div>
 			</div>
