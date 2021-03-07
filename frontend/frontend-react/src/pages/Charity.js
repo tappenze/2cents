@@ -15,7 +15,7 @@ class Charity extends React.Component {
     super();
     this.state = {
 		loaded: false,
-      	charity: 'none',
+      	charity: '',
     };
   }
 
@@ -25,6 +25,7 @@ class Charity extends React.Component {
 			return;
 		}
 		let result = await charityStatus(window.localStorage.getItem("jwt"))
+		
 		this.setState({
 			loaded: true,
 			charity: result.message.charity

@@ -56,7 +56,9 @@ class Home extends React.Component {
 			this.props.history.push("/")
 		}
 		let result = await charityStatus(window.localStorage.getItem("jwt"))
-
+		if (result.message.charity == "none") {
+			this.props.history.push("/charity")
+		}
 		this.setState({
 			loaded: true,
 			initial: result.message.active,
