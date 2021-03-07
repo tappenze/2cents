@@ -63,6 +63,13 @@ class Social extends React.Component {
 	  };
 
 	render() {
+
+		const trimEmail = (email) => {
+			let index = email.indexOf('@')
+			if (index === -1) index = email.length
+			return email.substr(0, index)
+		}
+
 		let mainContent;
 		if (this.state.loaded) {
 
@@ -120,7 +127,7 @@ class Social extends React.Component {
 				<div class="donationLeft">
 					<img src={src} class="charityIcon" />
 					<p>
-					<strong>{donation.email}</strong>
+					<strong>{trimEmail(donation.email)}</strong>
 					<br/>
 					<strong>Donated</strong> to{" "}
 					<strong>{donation.charity}</strong>
