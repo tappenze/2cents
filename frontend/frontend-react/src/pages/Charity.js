@@ -162,14 +162,7 @@ class Charity extends React.Component {
 								</div>
 						</div>
 					</div>
-					<div class="box-modal">
-						<div class="overlay"></div>
-						<div class="body-modal">
-						<div class="inner-body-modal">
-							hello it's me
-						</div>
-						</div>
-					</div>
+					
 				</div>
 			)
 		}
@@ -182,14 +175,7 @@ class Charity extends React.Component {
 					<div class="cardRow">
 						
 					</div>
-					<div class="box-modal">
-						<div class="overlay"></div>
-						<div class="body-modal">
-						<div class="inner-body-modal">
-							hello it's me
-						</div>
-						</div>
-					</div>
+					
 				</div>
 			)
 		}
